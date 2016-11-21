@@ -10,14 +10,23 @@ import UIKit
 
 class CarDetailsViewController: UIViewController {
 
+    var car: Car
+    
+    @IBOutlet weak var imageCarDetail: UIImageView!
+    @IBOutlet weak var manufacturerOutlet: UILabel!
+    @IBOutlet weak var modelLabel: UILabel!
+    @IBOutlet weak var hpLabel: UILabel!
+    @IBOutlet weak var yearLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = "Car Details"
         
+        
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

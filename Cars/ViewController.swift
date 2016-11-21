@@ -103,5 +103,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             tableView.reloadData()
         } 
     }
-
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let storyboard = UIStoryboard(name: "Main.storyboard", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "CarDetailsVC")
+        
+        self.navigationController?.pushViewController(controller, animated: true)
+        
+        
+    }
 }
