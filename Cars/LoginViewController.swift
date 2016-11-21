@@ -16,26 +16,27 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginPressed(_ sender: Any) {
        
-        //print(emailTextOutlet.text)
+        
         
         if emailTextOutlet.text == "test@test.com" && passwordFieldOutlet.text == "test123" {
             
             self.navigationController!.pushViewController(self.storyboard!.instantiateViewController(withIdentifier: "ViewController") as UIViewController, animated: true)
             
-        } else {
-            // let alert = UIAlertController(title: "Wrong", message: "wrongwrong", preferredStyle: UIAlertControllerStyle.alert)
-            let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+        } else if emailTextOutlet.text == "" || passwordFieldOutlet.text == "" {
+            
+            let alert = UIAlertController(title: "Warning", message: "All fields are required!", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
-            
-        }
+        } else {
         
-    
+            let alert = UIAlertController(title: "Warning", message: "Wrong email or password!", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
     }
-
+        
+}
     
-   
     override func viewDidLoad() {
         super.viewDidLoad()
         

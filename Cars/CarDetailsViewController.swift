@@ -10,12 +10,12 @@ import UIKit
 
 class CarDetailsViewController: UIViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = "Car Details"
         
-
     }
 
     override func didReceiveMemoryWarning() {
