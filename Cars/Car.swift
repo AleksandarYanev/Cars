@@ -18,4 +18,4 @@ class Car {
     var secondHand: Bool = false
     var imagePath: String = ""
     
-}
+    }

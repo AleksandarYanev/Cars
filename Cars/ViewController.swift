@@ -12,8 +12,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     @IBOutlet weak var tableView: UITableView!
     
-    @IBAction func addButtonPressed(_ sender: Any) {
+    @IBAction func addBtnPressed(_ sender: UIBarButtonItem) {
         
+        if let addEdit = storyboard?.instantiateViewController(withIdentifier: "addEditVC") {
+            
+            navigationController?.pushViewController(addEdit, animated: true)
+            
+        }
     }
     
     var cars = Array<Car>()
@@ -105,12 +110,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+        let carsViewController = self.storyboard?.instantiateViewController(withIdentifier: "CarDetailsVC") as! CarDetailsViewController
+        carsViewController.car = cars[indexPath.row]
         
-        let storyboard = UIStoryboard(name: "Main.storyboard", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "CarDetailsVC")
-        
-        self.navigationController?.pushViewController(controller, animated: true)
-        
-        
+        self.navigationController?.pushViewController(carsViewController, animated: true)
+      
     }
+    
+    
 }
+
+

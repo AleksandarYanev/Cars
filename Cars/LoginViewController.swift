@@ -14,6 +14,17 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextOutlet: UITextField!
     @IBOutlet weak var passwordFieldOutlet: UITextField!
     
+    @IBAction func saveLogin(_ sender: Any) {
+        
+        let defaults = UserDefaults.standard
+        
+        defaults.set(emailTextOutlet.text, forKey: "userNameKey")
+        defaults.set(passwordFieldOutlet.text, forKey: "passwordKey")
+        
+        defaults.synchronize()
+    }
+    
+    
     @IBAction func loginPressed(_ sender: Any) {
        
         

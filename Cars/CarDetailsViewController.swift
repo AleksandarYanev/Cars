@@ -10,7 +10,7 @@ import UIKit
 
 class CarDetailsViewController: UIViewController {
 
-    var car: Car
+    var car: Car?
     
     @IBOutlet weak var imageCarDetail: UIImageView!
     @IBOutlet weak var manufacturerOutlet: UILabel!
@@ -23,8 +23,17 @@ class CarDetailsViewController: UIViewController {
         
         self.navigationItem.title = "Car Details"
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         
-        
+       if let car = car {
+            manufacturerOutlet.text = "Manufacturer: \(car.manufacturer)"
+            imageCarDetail.image = UIImage(named: (car.imagePath))
+            modelLabel.text = "Model: \(car.model)"
+            hpLabel.text = "Horse power: \(car.hp)"
+            yearLabel.text = "Year: \(car.year)"
+        }
     }
     
     override func didReceiveMemoryWarning() {
