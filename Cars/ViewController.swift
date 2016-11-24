@@ -23,15 +23,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var cars = Array<Car>()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+       // self.navigationItem.setHidesBackButton(true, animated:true)
+        self.navigationItem.hidesBackButton = true
+        self.navigationItem.leftBarButtonItem = nil
+           }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = "Cars"
-     
+        
         tableView.delegate = self
         tableView.dataSource = self
-    
-        
+
         let audiA6 = createCar(manufacturer: "Audi", model: "A6", year: "2006", hp: 224, summary: "Originally in 1885, automobile company Wanderer was established, later becoming a branch of Audi AG.", secondHand: false, imagePath: "audi_a6_2006.jpg")
         
         let audiA4 = createCar(manufacturer: "Audi", model: "A4", year: "2010", hp: 200, summary: "The Audi A4 is a line of compact executive cars produced since late 1994 by the German car manufacturer Audi, a subsidiary of the Volkswagen Group.", secondHand: false, imagePath: "audi_a4_2010.jpg")
@@ -91,6 +97,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.brandView.text = cars[indexPath.row].manufacturer
         cell.modelView.text = cars[indexPath.row].model
         cell.yearView.text = cars[indexPath.row].year
+        
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         
         return cell
     }

@@ -14,22 +14,25 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextOutlet: UITextField!
     @IBOutlet weak var passwordFieldOutlet: UITextField!
     
-    @IBAction func saveLogin(_ sender: Any) {
+    func saveLogin() {
         
         let defaults = UserDefaults.standard
         
         defaults.set(emailTextOutlet.text, forKey: "userNameKey")
         defaults.set(passwordFieldOutlet.text, forKey: "passwordKey")
+        defaults.set(true, forKey: "isLogged")
         
         defaults.synchronize()
     }
     
-    
     @IBAction func loginPressed(_ sender: Any) {
        
         
-        
         if emailTextOutlet.text == "test@test.com" && passwordFieldOutlet.text == "test123" {
+            
+            saveLogin()
+            
+            navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
             
             self.navigationController!.pushViewController(self.storyboard!.instantiateViewController(withIdentifier: "ViewController") as UIViewController, animated: true)
             
@@ -52,6 +55,18 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.title = "Login"
+        
+        let defaults = UserDefaults.standard
+        
+        if let isLogged = defaults.object(forKey: "isLogged") as? Bool, let userNameField = defaults.object(forKey: "userNameKey") as? String, let passwordField = defaults.object(forKey: "passwordKey") as? String {
+            
+            navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
+            
+            if isLogged == true && userNameField == "test@test.com" && passwordField == "test123" {
+                self.navigationController?.pushViewController(self.storyboard!.instantiateViewController(withIdentifier: "ViewController"), animated: true)
+            }
+            
+        }
         
     }
 
