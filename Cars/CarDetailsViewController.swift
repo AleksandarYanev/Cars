@@ -17,6 +17,9 @@ class CarDetailsViewController: UIViewController {
     @IBOutlet weak var modelLabel: UILabel!
     @IBOutlet weak var hpLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var summaryLabel: UILabel!
+    @IBOutlet weak var secondHandLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +36,9 @@ class CarDetailsViewController: UIViewController {
             modelLabel.text = "Model: \(car.model)"
             hpLabel.text = "Horse power: \(car.hp)"
             yearLabel.text = "Year: \(car.year)"
+            summaryLabel.text = "\(car.summary)"
+            secondHandLabel.text = "Second hand: \(car.secondHand)"
+        
         }
     }
     
