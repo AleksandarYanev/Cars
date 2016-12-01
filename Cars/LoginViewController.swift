@@ -60,7 +60,7 @@ class LoginViewController: UIViewController {
         
         if let isLogged = defaults.object(forKey: "isLogged") as? Bool, let userNameField = defaults.object(forKey: "userNameKey") as? String, let passwordField = defaults.object(forKey: "passwordKey") as? String {
             
-            navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
+            navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
             
             if isLogged == true && userNameField == "test@test.com" && passwordField == "test123" {
                 self.navigationController?.pushViewController(self.storyboard!.instantiateViewController(withIdentifier: "ViewController"), animated: true)
@@ -72,18 +72,6 @@ class LoginViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

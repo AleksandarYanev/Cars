@@ -10,6 +10,23 @@ import UIKit
 
 class CarDetailsViewController: UIViewController {
 
+    @IBAction func deleteButtonPressed(_ sender: UIBarButtonItem) {
+       // Delete button not finished
+        if let deleteBtn = storyboard?.instantiateViewController(withIdentifier: "addEditVC") {
+            navigationController?.pushViewController(deleteBtn, animated: true)
+        }
+        
+    }
+    
+    @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
+    
+        if let editVC = storyboard?.instantiateViewController(withIdentifier: "addEditVC") as? NewOrEditViewController {
+            editVC.car = car
+            navigationController?.pushViewController(editVC, animated: true)
+        }
+        
+    }
+    
     var car: Car?
     
     @IBOutlet weak var imageCarDetail: UIImageView!
@@ -47,15 +64,4 @@ class CarDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
