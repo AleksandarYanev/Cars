@@ -12,7 +12,8 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     
     @IBOutlet weak var carPickerView: UIPickerView!
     @IBOutlet weak var carPickerBtnView: UIButton!
-    @IBOutlet weak var modelLabelTopConstraint: NSLayoutConstraint!
+    
+    
     
     var car: Car?
     
@@ -33,7 +34,7 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         self.navigationItem.title = "New Car / Edit Car"
         carPickerView.dataSource = self
         carPickerView.delegate = self
@@ -52,8 +53,7 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     
     @IBAction func manufactBtnPressed(_ sender: UIButton) {
         
-        carPickerView.isHidden = false
-    }
+  
     
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -71,8 +71,8 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         carPickerBtnView.setTitle(manufactArray[row], for: UIControlState.normal)
-        carPickerView.isHidden = true
         selectedManufacturer = manufactArray[row]
+        heightConstraintCarPickerview.constant = 0
     }
 }
 

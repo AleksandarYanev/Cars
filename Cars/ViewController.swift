@@ -38,10 +38,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
         
-        if let cars = UserDefaults.standard.array(forKey: "cars") {
-            print("getting cars from database")
-            self.cars = cars as! Array<Car>
-        } else {
+       
             
             let audiA6 = createCar(manufacturer: "Audi", model: "A6", year: "2006", hp: 224, summary: "Originally in 1885, automobile company Wanderer was established, later becoming a branch of Audi AG.", secondHand: false, imagePath: "audi_a6_2006.jpg")
             
@@ -71,10 +68,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             cars.append(vwPolo)
             cars.append(volvoC70)
          
-            UserDefaults.standard.set(cars as! NSMutableArray, forKey: "cars")
-            print("setting cars in the database")
-            
-        }
+      
         //cars.append(createCar(manufacturer: "Audi", model: "A6", year: "2006", hp: 224, summary: "Originally in 1885, automobile company Wanderer was established, later becoming a branch of Audi AG.", secondHand: false, imagePath: "audi_a6_2006.jpg"))
     }
     

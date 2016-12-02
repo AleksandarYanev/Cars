@@ -139,7 +139,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eTI-Xu-tuS" id="RRd-c1-43a">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DOT-kU-SjH">
@@ -257,7 +257,7 @@
                                     <action selector="manufactBtnPressed:" destination="1qU-r5-Pvc" eventType="touchUpInside" id="fuT-Pn-Civ"/>
                                 </connections>
                             </button>
-                            <pickerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BCa-l8-baS">
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BCa-l8-baS">
                                 <rect key="frame" x="16" y="202" width="343" height="81"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="81" id="ZWf-Go-CAQ"/>
@@ -290,7 +290,7 @@
                     <connections>
                         <outlet property="carPickerBtnView" destination="c4b-t5-JwP" id="Dns-ta-YGu"/>
                         <outlet property="carPickerView" destination="BCa-l8-baS" id="yQB-6M-Nx5"/>
-                        <outlet property="modelLabelTopConstraint" destination="lJz-sC-Nkd" id="Yl9-48-QAj"/>
+                        <outlet property="heightConstraintCarPickerview" destination="ZWf-Go-CAQ" id="c10-CN-lZt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uBM-Du-2Tx" userLabel="First Responder" sceneMemberID="firstResponder"/>
