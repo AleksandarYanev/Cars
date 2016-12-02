@@ -139,7 +139,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eTI-Xu-tuS" id="RRd-c1-43a">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DOT-kU-SjH">
@@ -260,7 +260,7 @@
                             <pickerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BCa-l8-baS">
                                 <rect key="frame" x="16" y="202" width="343" height="0.0"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" id="ZWf-Go-CAQ"/>
+                                    <constraint firstAttribute="height" id="8oM-R4-lD1"/>
                                 </constraints>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Model" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ttz-dH-oVe">
@@ -272,26 +272,62 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type the model..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DK1-Wa-4Am">
+                                <rect key="frame" x="24" y="239" width="327" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="lHp-Dq-fsw"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lc3-bp-3C3">
+                                <rect key="frame" x="24" y="277" width="31" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="0HC-at-p70"/>
+                                </constraints>
+                                <state key="normal" title="Year"/>
+                                <connections>
+                                    <action selector="yearButtonPressed:" destination="1qU-r5-Pvc" eventType="touchUpInside" id="h4l-jD-IfM"/>
+                                </connections>
+                            </button>
+                            <pickerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNd-gL-rJ8">
+                                <rect key="frame" x="24" y="315" width="327" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="Gg8-lK-cE8"/>
+                                </constraints>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Ttz-dH-oVe" firstAttribute="leading" secondItem="hNs-Ox-egC" secondAttribute="leadingMargin" constant="8" id="GDx-ap-h0i"/>
                             <constraint firstItem="R0p-xQ-tE2" firstAttribute="top" secondItem="08J-Os-yzm" secondAttribute="bottom" constant="8" id="QZk-MU-VZV"/>
+                            <constraint firstItem="qNd-gL-rJ8" firstAttribute="top" secondItem="lc3-bp-3C3" secondAttribute="bottom" constant="8" id="Tq1-6Q-3MG"/>
                             <constraint firstItem="c4b-t5-JwP" firstAttribute="top" secondItem="R0p-xQ-tE2" secondAttribute="bottom" constant="8" id="YWj-Id-JK5"/>
+                            <constraint firstItem="DK1-Wa-4Am" firstAttribute="top" secondItem="Ttz-dH-oVe" secondAttribute="bottom" constant="8" id="Z6l-gi-vE8"/>
+                            <constraint firstItem="lc3-bp-3C3" firstAttribute="top" secondItem="DK1-Wa-4Am" secondAttribute="bottom" constant="8" id="ZGc-kQ-OAh"/>
+                            <constraint firstItem="DK1-Wa-4Am" firstAttribute="leading" secondItem="hNs-Ox-egC" secondAttribute="leadingMargin" constant="8" id="ZWd-nd-qo9"/>
+                            <constraint firstItem="lc3-bp-3C3" firstAttribute="leading" secondItem="hNs-Ox-egC" secondAttribute="leadingMargin" constant="8" id="ccr-CK-82Q"/>
                             <constraint firstItem="BCa-l8-baS" firstAttribute="leading" secondItem="hNs-Ox-egC" secondAttribute="leadingMargin" id="cng-3h-uJ8"/>
                             <constraint firstItem="BCa-l8-baS" firstAttribute="top" secondItem="c4b-t5-JwP" secondAttribute="bottom" constant="8" id="eG0-8P-zKu"/>
+                            <constraint firstItem="DK1-Wa-4Am" firstAttribute="trailing" secondItem="hNs-Ox-egC" secondAttribute="trailingMargin" constant="-8" id="fgH-ob-ZdX"/>
                             <constraint firstItem="BCa-l8-baS" firstAttribute="trailing" secondItem="hNs-Ox-egC" secondAttribute="trailingMargin" id="gLq-0C-LR4"/>
                             <constraint firstItem="Ttz-dH-oVe" firstAttribute="top" secondItem="BCa-l8-baS" secondAttribute="bottom" constant="8" id="lJz-sC-Nkd"/>
+                            <constraint firstItem="qNd-gL-rJ8" firstAttribute="leading" secondItem="hNs-Ox-egC" secondAttribute="leadingMargin" constant="8" id="nEC-r6-b9Q"/>
                             <constraint firstItem="R0p-xQ-tE2" firstAttribute="centerX" secondItem="hNs-Ox-egC" secondAttribute="centerX" id="nFe-PP-veE"/>
                             <constraint firstItem="c4b-t5-JwP" firstAttribute="leading" secondItem="hNs-Ox-egC" secondAttribute="leadingMargin" constant="8" id="tVl-EN-uCj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qNd-gL-rJ8" secondAttribute="trailing" constant="8" id="u3c-22-UvF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wIB-rK-zAA"/>
                     <connections>
                         <outlet property="carPickerBtnView" destination="c4b-t5-JwP" id="Dns-ta-YGu"/>
                         <outlet property="carPickerView" destination="BCa-l8-baS" id="yQB-6M-Nx5"/>
+                        <outlet property="manufacturerPickerHeightConstraint" destination="8oM-R4-lD1" id="NSg-TB-nXg"/>
                         <outlet property="modelLabelTopConstraint" destination="lJz-sC-Nkd" id="Yl9-48-QAj"/>
-                        <outlet property="pickerHeightConstraint" destination="ZWf-Go-CAQ" id="JF6-eO-ajP"/>
+                        <outlet property="yearPickerButtonTitle" destination="lc3-bp-3C3" id="qYx-Y8-oID"/>
+                        <outlet property="yearPickerHeightConstraint" destination="Gg8-lK-cE8" id="FXf-IC-BgR"/>
+                        <outlet property="yearPickerView" destination="qNd-gL-rJ8" id="f4F-d1-e3E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uBM-Du-2Tx" userLabel="First Responder" sceneMemberID="firstResponder"/>

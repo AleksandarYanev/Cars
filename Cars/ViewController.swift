@@ -68,7 +68,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     @IBAction func addBtnPressed(_ sender: UIBarButtonItem) {
 
-        if let addEdit = storyboard?.instantiateViewController(withIdentifier: "addEditVC") {
+        if let addEdit = storyboard?.instantiateViewController(withIdentifier: "NewOrEditViewController") {
 
             navigationController?.pushViewController(addEdit, animated: true)
             
