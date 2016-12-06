@@ -297,34 +297,59 @@
                                     <constraint firstAttribute="height" id="Gg8-lK-cE8"/>
                                 </constraints>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJI-8m-fOW">
+                                <rect key="frame" x="24" y="323" width="87" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="kTp-xp-kbV"/>
+                                </constraints>
+                                <state key="normal" title="Horse power"/>
+                                <connections>
+                                    <action selector="horsePowerButtonPressed:" destination="1qU-r5-Pvc" eventType="touchUpInside" id="TiB-QK-q2P"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fI2-qk-plf">
+                                <rect key="frame" x="16" y="361" width="343" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="QCG-Lb-5XX"/>
+                                </constraints>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="MJI-8m-fOW" firstAttribute="leading" secondItem="hNs-Ox-egC" secondAttribute="leadingMargin" constant="8" id="1Ig-gL-abB"/>
                             <constraint firstItem="Ttz-dH-oVe" firstAttribute="leading" secondItem="hNs-Ox-egC" secondAttribute="leadingMargin" constant="8" id="GDx-ap-h0i"/>
+                            <constraint firstItem="MJI-8m-fOW" firstAttribute="top" secondItem="qNd-gL-rJ8" secondAttribute="bottom" constant="8" id="MXl-3F-DK1"/>
                             <constraint firstItem="R0p-xQ-tE2" firstAttribute="top" secondItem="08J-Os-yzm" secondAttribute="bottom" constant="8" id="QZk-MU-VZV"/>
                             <constraint firstItem="qNd-gL-rJ8" firstAttribute="top" secondItem="lc3-bp-3C3" secondAttribute="bottom" constant="8" id="Tq1-6Q-3MG"/>
                             <constraint firstItem="c4b-t5-JwP" firstAttribute="top" secondItem="R0p-xQ-tE2" secondAttribute="bottom" constant="8" id="YWj-Id-JK5"/>
                             <constraint firstItem="DK1-Wa-4Am" firstAttribute="top" secondItem="Ttz-dH-oVe" secondAttribute="bottom" constant="8" id="Z6l-gi-vE8"/>
                             <constraint firstItem="lc3-bp-3C3" firstAttribute="top" secondItem="DK1-Wa-4Am" secondAttribute="bottom" constant="8" id="ZGc-kQ-OAh"/>
                             <constraint firstItem="DK1-Wa-4Am" firstAttribute="leading" secondItem="hNs-Ox-egC" secondAttribute="leadingMargin" constant="8" id="ZWd-nd-qo9"/>
+                            <constraint firstItem="fI2-qk-plf" firstAttribute="trailing" secondItem="hNs-Ox-egC" secondAttribute="trailingMargin" id="bLF-DW-Cia"/>
                             <constraint firstItem="lc3-bp-3C3" firstAttribute="leading" secondItem="hNs-Ox-egC" secondAttribute="leadingMargin" constant="8" id="ccr-CK-82Q"/>
                             <constraint firstItem="BCa-l8-baS" firstAttribute="leading" secondItem="hNs-Ox-egC" secondAttribute="leadingMargin" id="cng-3h-uJ8"/>
                             <constraint firstItem="BCa-l8-baS" firstAttribute="top" secondItem="c4b-t5-JwP" secondAttribute="bottom" constant="8" id="eG0-8P-zKu"/>
                             <constraint firstItem="DK1-Wa-4Am" firstAttribute="trailing" secondItem="hNs-Ox-egC" secondAttribute="trailingMargin" constant="-8" id="fgH-ob-ZdX"/>
                             <constraint firstItem="BCa-l8-baS" firstAttribute="trailing" secondItem="hNs-Ox-egC" secondAttribute="trailingMargin" id="gLq-0C-LR4"/>
+                            <constraint firstItem="fI2-qk-plf" firstAttribute="top" secondItem="MJI-8m-fOW" secondAttribute="bottom" constant="8" id="iMA-RW-hzY"/>
                             <constraint firstItem="Ttz-dH-oVe" firstAttribute="top" secondItem="BCa-l8-baS" secondAttribute="bottom" constant="8" id="lJz-sC-Nkd"/>
                             <constraint firstItem="qNd-gL-rJ8" firstAttribute="leading" secondItem="hNs-Ox-egC" secondAttribute="leadingMargin" constant="8" id="nEC-r6-b9Q"/>
                             <constraint firstItem="R0p-xQ-tE2" firstAttribute="centerX" secondItem="hNs-Ox-egC" secondAttribute="centerX" id="nFe-PP-veE"/>
                             <constraint firstItem="c4b-t5-JwP" firstAttribute="leading" secondItem="hNs-Ox-egC" secondAttribute="leadingMargin" constant="8" id="tVl-EN-uCj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qNd-gL-rJ8" secondAttribute="trailing" constant="8" id="u3c-22-UvF"/>
+                            <constraint firstItem="fI2-qk-plf" firstAttribute="leading" secondItem="hNs-Ox-egC" secondAttribute="leadingMargin" id="xOD-oR-4CJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wIB-rK-zAA"/>
                     <connections>
                         <outlet property="carPickerBtnView" destination="c4b-t5-JwP" id="Dns-ta-YGu"/>
                         <outlet property="carPickerView" destination="BCa-l8-baS" id="yQB-6M-Nx5"/>
+                        <outlet property="horsePowerButtonTitle" destination="MJI-8m-fOW" id="pzm-YO-3fe"/>
+                        <outlet property="horsePowerHeightConstraint" destination="QCG-Lb-5XX" id="NY9-iR-R3B"/>
+                        <outlet property="horsePowerPickerView" destination="fI2-qk-plf" id="e5L-UL-vKy"/>
                         <outlet property="manufacturerPickerHeightConstraint" destination="8oM-R4-lD1" id="NSg-TB-nXg"/>
                         <outlet property="modelLabelTopConstraint" destination="lJz-sC-Nkd" id="Yl9-48-QAj"/>
+                        <outlet property="newCarImageView" destination="R0p-xQ-tE2" id="NWJ-t6-mH5"/>
                         <outlet property="yearPickerButtonTitle" destination="lc3-bp-3C3" id="qYx-Y8-oID"/>
                         <outlet property="yearPickerHeightConstraint" destination="Gg8-lK-cE8" id="FXf-IC-BgR"/>
                         <outlet property="yearPickerView" destination="qNd-gL-rJ8" id="f4F-d1-e3E"/>

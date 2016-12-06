@@ -29,8 +29,6 @@ class CarDetailsViewController: UIViewController {
         super.viewDidLoad()
 
         self.navigationItem.title = "Car Details"
-
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -50,8 +48,8 @@ class CarDetailsViewController: UIViewController {
 
 
     @IBAction func deleteButtonPressed(_ sender: UIBarButtonItem) {
-        var car = Car()
-        car.hp = 23
+        let car = Car()
+        //car.hp = 23
         cars.add(car)
 
         cars.removeObject(at: index)
@@ -62,6 +60,7 @@ class CarDetailsViewController: UIViewController {
     @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
 
         if let editVC = storyboard?.instantiateViewController(withIdentifier: "NewOrEditViewController") as? NewOrEditViewController {
+            editVC.comingFromEditActionButton = true
             editVC.car = car
             navigationController?.pushViewController(editVC, animated: true)
         }
