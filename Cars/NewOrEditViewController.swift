@@ -23,8 +23,9 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     @IBOutlet weak var horsePowerButtonTitle: UIButton!
     
     var car: Car?
-    var comingFromAddActionButton = false
-    var comingFromEditActionButton = false
+    var isEditMode: Bool!
+    var cars : NSMutableArray!
+    var index : Int!
     
     let manufactArray = ["Audi", "Bmw", "Citroen", "Opel", "Peugeot", "Volkswagen", "Volvo"]
     var selectedManufacturer = "Citroen"
@@ -34,30 +35,6 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     var selectedHorsePower = 90
     
     
-    func presetValues(withObject object: Car) {
-        selectedManufacturer = object.manufacturer
-        selectedYear = object.year
-        selectedHorsePower = object.hp
-    }
-    
-    func presetDefaultValues() {
-        carPickerBtnView.setTitle(selectedManufacturer, for: UIControlState.normal)
-        if let index = manufactArray.index(of: selectedManufacturer) {
-            
-            carPickerView.selectRow(index, inComponent: 0, animated: true)
-        }
-        
-        yearPickerButtonTitle.setTitle(selectedYear, for: UIControlState.normal)
-        if let index = yearsArray.index(of: selectedYear) {
-            
-            yearPickerView.selectRow(index, inComponent: 0, animated: true)
-        }
-        horsePowerButtonTitle.setTitle("\(selectedHorsePower)", for: UIControlState.normal)
-        if let index = horsePowerArray.index(of: selectedHorsePower) {
-            
-            horsePowerPickerView.selectRow(index, inComponent: 0, animated: true)
-        }
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,25 +45,76 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         horsePowerPickerView.dataSource = self
         horsePowerPickerView.delegate = self
         
-        if car != nil {
-            presetValues(withObject: car!)
+        if let cars = self.cars, let index = self.index {
+            car = cars[index] as? Car
         }
         
-        presetDefaultValues()
+        if car != nil {
+            isEditMode = true
+            presetValues(withCar: car!)
+        } else {
+            isEditMode = false
+            presetNoCarValues()
+        }
+        
+        initiateValues()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        if comingFromAddActionButton == true {
+        if isEditMode! {
             
-            newCarImageView.image = UIImage(named: "new_car_image.jpg")
-            
-        } else if comingFromEditActionButton == true {
-            
+            self.navigationItem.title = "Edit Car"
             newCarImageView.image = UIImage(named: (car?.imagePath)!)
+            
+        } else if !isEditMode {
+            
+            self.navigationItem.title = "New Car"
+            newCarImageView.image = UIImage(named: "new_car_image.jpg")
         }
+    }
+    
+    func presetValues(withCar : Car) {
         
+        let manufacturer = withCar.manufacturer
+        let year = withCar.year
+        let horsePower = withCar.hp
+        
+        carPickerBtnView.setTitle(manufacturer, for: .normal)
+        yearPickerButtonTitle.setTitle(year, for: .normal)
+        horsePowerButtonTitle.setTitle(String(horsePower), for: .normal)
+        
+        selectedManufacturer = withCar.manufacturer
+        selectedYear = withCar.year
+        selectedHorsePower = withCar.hp
+    }
+    
+    func presetNoCarValues() {
+        
+        let manufacturer = "Manufacturer"
+        let year = "Year"
+        let horsePower = "Horsepower"
+        
+        carPickerBtnView.setTitle(manufacturer, for: .normal)
+        yearPickerButtonTitle.setTitle(year, for: .normal)
+        horsePowerButtonTitle.setTitle(String(horsePower), for: .normal)
+        
+        selectedManufacturer = "Audi"
+        selectedYear = "2006"
+        selectedHorsePower = 224
+    }
+    
+    func initiateValues() {
+        if let index = manufactArray.index(of: selectedManufacturer) {
+            carPickerView.selectRow(index, inComponent: 0, animated: true)
+        }
+        if let index = yearsArray.index(of: selectedYear) {
+            yearPickerView.selectRow(index, inComponent: 0, animated: true)
+        }
+        if let index = horsePowerArray.index(of: selectedHorsePower) {
+            horsePowerPickerView.selectRow(index, inComponent: 0, animated: true)
+        }
     }
     
     @IBAction func manufactBtnPressed(_ sender: UIButton) {
@@ -100,7 +128,6 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
             carPickerView.isHidden = true
             manufacturerPickerHeightConstraint.constant = 0
         }
-        
     }
     
     @IBAction func yearButtonPressed(_ sender: UIButton) {
@@ -145,7 +172,6 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
             horsePowerPickerView.isEqual(horsePowerPickerView)
             return horsePowerArray.count
         }
-        
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -177,14 +203,11 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
             horsePowerButtonTitle.setTitle("\(horsePowerArray[row])", for: UIControlState.normal)
             selectedHorsePower = horsePowerArray[row]
             hidePicker(pickerView: horsePowerPickerView, heightConstraint: horsePowerHeightConstraint)
-            
         }
-        
     }
     
     func hidePicker(pickerView: UIPickerView, heightConstraint: NSLayoutConstraint) {
         pickerView.isHidden = true
         heightConstraint.constant = 0
-        
     }
 }
