@@ -21,6 +21,7 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     @IBOutlet weak var yearPickerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var horsePowerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var horsePowerButtonTitle: UIButton!
+    @IBOutlet weak var modelTextField: UITextField!
     
     var car: Car?
     var isEditMode: Bool!
@@ -29,11 +30,10 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     
     let manufactArray = ["Audi", "Bmw", "Citroen", "Opel", "Peugeot", "Volkswagen", "Volvo"]
     var selectedManufacturer = "Citroen"
-    let yearsArray = ["1980", "2000", "2001", "2002", "2003"]
+    var yearsArray = [String]()
     var selectedYear = "2000"
-    let horsePowerArray = [123, 456, 789, 155, 300, 200]
+    var horsePowerArray = [Int]()
     var selectedHorsePower = 90
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +72,14 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
             
             self.navigationItem.title = "New Car"
             newCarImageView.image = UIImage(named: "new_car_image.jpg")
+        }
+        
+        for yearNumber in 1980...2016 {
+            yearsArray.append("\(yearNumber)")
+        }
+        
+        for horsepowerNumber in 50...500 {
+            horsePowerArray.append(horsepowerNumber)
         }
     }
     
@@ -154,7 +162,24 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
             horsePowerPickerView.isHidden = true
             horsePowerHeightConstraint.constant = 0
         }
+    }
+    
+    @IBAction func saveButton(_ sender: Any) {
         
+        if modelTextField.text == "" || carPickerBtnView.title(for: .normal) == "Manufacturer" || yearPickerButtonTitle.title(for: .normal) == "Year" || horsePowerButtonTitle.title(for: .normal) == "Horsepower" {
+            
+            let alert = UIAlertController(title: "Warning", message: "All fields are required!", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            
+            if isEditMode! {
+                
+                //save element
+            } else {
+                //add element
+            }
+        }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -169,7 +194,7 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
             return yearsArray.count
             
         } else {
-            horsePowerPickerView.isEqual(horsePowerPickerView)
+            pickerView.isEqual(horsePowerPickerView)
             return horsePowerArray.count
         }
     }
@@ -181,7 +206,7 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         } else if pickerView.isEqual(yearPickerView) {
             return yearsArray[row]
             
-        } else {
+        } else { pickerView.isEqual(horsePowerPickerView)
             return "\(horsePowerArray[row])"
         }
     }

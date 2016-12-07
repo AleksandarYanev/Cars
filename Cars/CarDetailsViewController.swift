@@ -43,10 +43,15 @@ class CarDetailsViewController: UIViewController {
             yearLabel.text = "Year: \(car.year)"
             summaryLabel.text = "\(car.summary)"
             secondHandLabel.text = "Second hand: \(car.secondHand)"
+            
+            if !car.secondHand {
+                secondHandLabel.text = "Second hand: No"
+            } else {
+                secondHandLabel.text = "Second hand: Yes"
+            }
         }
     }
-
-
+    
     @IBAction func deleteButtonPressed(_ sender: UIBarButtonItem) {
         let car = Car()
         //car.hp = 23
