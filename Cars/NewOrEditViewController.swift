@@ -22,6 +22,7 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     @IBOutlet weak var horsePowerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var horsePowerButtonTitle: UIButton!
     @IBOutlet weak var modelTextField: UITextField!
+    @IBOutlet weak var summaryTextView: UITextView!
     
     var car: Car?
     var isEditMode: Bool!

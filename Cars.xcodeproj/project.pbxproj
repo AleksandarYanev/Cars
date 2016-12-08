@@ -10,6 +10,7 @@
 		D14CE25D1DDF07470045D612 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14CE25C1DDF07470045D612 /* LoginViewController.swift */; };
 		D14CE2611DDF120C0045D612 /* NewOrEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14CE2601DDF120C0045D612 /* NewOrEditViewController.swift */; };
 		D14CE2631DDF12590045D612 /* CarDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14CE2621DDF12590045D612 /* CarDetailsViewController.swift */; };
+		D1A7936B1DF985D6003E9DC5 /* BorderedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A7936A1DF985D6003E9DC5 /* BorderedTextView.swift */; };
 		D1AB1D931DDDD576002DA6FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AB1D921DDDD576002DA6FB /* AppDelegate.swift */; };
 		D1AB1D951DDDD576002DA6FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AB1D941DDDD576002DA6FB /* ViewController.swift */; };
 		D1AB1D9A1DDDD576002DA6FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1AB1D991DDDD576002DA6FB /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 		D14CE25C1DDF07470045D612 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D14CE2601DDF120C0045D612 /* NewOrEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewOrEditViewController.swift; sourceTree = "<group>"; };
 		D14CE2621DDF12590045D612 /* CarDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarDetailsViewController.swift; sourceTree = "<group>"; };
+		D1A7936A1DF985D6003E9DC5 /* BorderedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedTextView.swift; sourceTree = "<group>"; };
 		D1AB1D8F1DDDD576002DA6FB /* Cars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1AB1D921DDDD576002DA6FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1AB1D941DDDD576002DA6FB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				D1AB1DA71DDDD8E6002DA6FB /* CarViewClass.swift */,
+				D1A7936A1DF985D6003E9DC5 /* BorderedTextView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1A7936B1DF985D6003E9DC5 /* BorderedTextView.swift in Sources */,
 				D14CE2611DDF120C0045D612 /* NewOrEditViewController.swift in Sources */,
 				D14CE2631DDF12590045D612 /* CarDetailsViewController.swift in Sources */,
 				D1AB1DA81DDDD8E6002DA6FB /* CarViewClass.swift in Sources */,
@@ -239,7 +243,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -283,7 +287,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
