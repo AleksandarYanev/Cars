@@ -34,6 +34,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.navigationItem.leftBarButtonItem = nil
 
         tableView.reloadData()
+        
     }
 
     func loadCarsData() {
