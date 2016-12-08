@@ -125,42 +125,40 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         }
     }
     
+    func hidePicker(pickerView: UIPickerView, heightConstraint: NSLayoutConstraint) {
+        pickerView.isHidden = true
+        heightConstraint.constant = 0
+    }
+    
+    func showPicker(pickerView: UIPickerView, heightConstraint: NSLayoutConstraint) {
+        pickerView.isHidden = false
+        heightConstraint.constant = 81
+    }
+    
     @IBAction func manufactBtnPressed(_ sender: UIButton) {
         
         if(carPickerView.isHidden) {
-            // show
-            carPickerView.isHidden = false
-            manufacturerPickerHeightConstraint.constant = 81
+            showPicker(pickerView: carPickerView, heightConstraint: manufacturerPickerHeightConstraint)
         } else {
-            // hide
-            carPickerView.isHidden = true
-            manufacturerPickerHeightConstraint.constant = 0
+            hidePicker(pickerView: carPickerView, heightConstraint: manufacturerPickerHeightConstraint)
         }
     }
     
     @IBAction func yearButtonPressed(_ sender: UIButton) {
         
         if(yearPickerView.isHidden) {
-            // show
-            yearPickerView.isHidden = false
-            yearPickerHeightConstraint.constant = 81
+            showPicker(pickerView: yearPickerView, heightConstraint: yearPickerHeightConstraint)
         } else {
-            // hide
-            yearPickerView.isHidden = true
-            yearPickerHeightConstraint.constant = 0
+            hidePicker(pickerView: yearPickerView, heightConstraint: yearPickerHeightConstraint)
         }
     }
     
     @IBAction func horsePowerButtonPressed(_ sender: UIButton) {
         
         if(horsePowerPickerView.isHidden) {
-            // show
-            horsePowerPickerView.isHidden = false
-            horsePowerHeightConstraint.constant = 81
+            showPicker(pickerView: horsePowerPickerView, heightConstraint: horsePowerHeightConstraint)
         } else {
-            // hide
-            horsePowerPickerView.isHidden = true
-            horsePowerHeightConstraint.constant = 0
+            hidePicker(pickerView: horsePowerPickerView, heightConstraint: horsePowerHeightConstraint)
         }
     }
     
@@ -168,13 +166,12 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         
         if modelTextField.text == "" || carPickerBtnView.title(for: .normal) == "Manufacturer" || yearPickerButtonTitle.title(for: .normal) == "Year" || horsePowerButtonTitle.title(for: .normal) == "Horsepower" {
             
-            let alert = UIAlertController(title: "Warning", message: "All fields are required!", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "Warning", message: "Some of mandatory fields are not selected!", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         } else {
             
             if isEditMode! {
-                
                 //save element
             } else {
                 //add element
@@ -229,10 +226,5 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
             selectedHorsePower = horsePowerArray[row]
             hidePicker(pickerView: horsePowerPickerView, heightConstraint: horsePowerHeightConstraint)
         }
-    }
-    
-    func hidePicker(pickerView: UIPickerView, heightConstraint: NSLayoutConstraint) {
-        pickerView.isHidden = true
-        heightConstraint.constant = 0
     }
 }
