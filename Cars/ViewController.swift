@@ -34,7 +34,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.navigationItem.leftBarButtonItem = nil
 
         tableView.reloadData()
-        
     }
 
     func loadCarsData() {
@@ -70,8 +69,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func addBtnPressed(_ sender: UIBarButtonItem) {
 
         if let addEdit = storyboard?.instantiateViewController(withIdentifier: "NewOrEditViewController") as? NewOrEditViewController {
+            addEdit.cars = cars
             navigationController?.pushViewController(addEdit, animated: true)
-            
         }
     }
 
@@ -92,7 +91,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         return cars.count
-
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -132,7 +130,5 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         
         self.navigationController?.pushViewController(carsViewController, animated: true)
-        
     }
-    
 }

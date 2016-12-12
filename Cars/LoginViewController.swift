@@ -27,7 +27,6 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginPressed(_ sender: Any) {
        
-        
         if emailTextOutlet.text == "test@test.com" && passwordFieldOutlet.text == "test123" {
             
             saveLogin()
@@ -48,7 +47,6 @@ class LoginViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
     }
-        
 }
     
     override func viewDidLoad() {
@@ -65,13 +63,10 @@ class LoginViewController: UIViewController {
             if isLogged == true && userNameField == "test@test.com" && passwordField == "test123" {
                 self.navigationController?.pushViewController(self.storyboard!.instantiateViewController(withIdentifier: "ViewController"), animated: true)
             }
-            
         }
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
 }

@@ -138,7 +138,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eTI-Xu-tuS" id="RRd-c1-43a">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DOT-kU-SjH">
@@ -276,7 +276,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type the model..." textAlignment="natural" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="DK1-Wa-4Am">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="DK1-Wa-4Am">
                                                 <rect key="frame" x="12" y="219" width="296" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="lHp-Dq-fsw"/>
@@ -311,7 +311,7 @@
                                                     <action selector="horsePowerButtonPressed:" destination="1qU-r5-Pvc" eventType="touchUpInside" id="oI8-MQ-dyx"/>
                                                 </connections>
                                             </button>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fI2-qk-plf">
+                                            <pickerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fI2-qk-plf">
                                                 <rect key="frame" x="12" y="341" width="296" height="0.0"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" id="QCG-Lb-5XX"/>
@@ -403,6 +403,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wIB-rK-zAA">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="sY6-Fa-mhg">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="1qU-r5-Pvc" id="Lbz-gC-trz"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="VfK-gb-6Se">
                             <connections>
                                 <action selector="saveButton:" destination="1qU-r5-Pvc" id="BZQ-dj-Tml"/>

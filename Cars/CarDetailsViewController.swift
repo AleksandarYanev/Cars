@@ -30,7 +30,7 @@ class CarDetailsViewController: UIViewController {
 
         self.navigationItem.title = "Car Details"
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
 
         if let cars = self.cars, let index = self.index {
@@ -54,12 +54,9 @@ class CarDetailsViewController: UIViewController {
     
     @IBAction func deleteButtonPressed(_ sender: UIBarButtonItem) {
         let car = Car()
-        //car.hp = 23
         cars.add(car)
-
         cars.removeObject(at: index)
         _ = self.navigationController?.popViewController(animated: true)
-
     }
 
     @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
@@ -69,7 +66,5 @@ class CarDetailsViewController: UIViewController {
             editVC.index = index
             navigationController?.pushViewController(editVC, animated: true)
         }
-        
     }
-    
 }

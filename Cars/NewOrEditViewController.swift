@@ -83,18 +83,15 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
             horsePowerArray.append(horsepowerNumber)
         }
         
-        if car!.secondHand {
+        if let isSecondhand = car, isSecondhand.secondHand {
             switchTurnSecondHand.isOn = true
         } else {
             switchTurnSecondHand.isOn = false
         }
         
+        modelTextField.placeholder = car?.model
+        summaryTextView.text = car?.summary
     }
-    
-//    func setSummaryText(withText: Car) {
-//            
-//        }
-//    }
     
     func presetValues(withCar : Car) {
         
@@ -119,11 +116,11 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         
         manufacturerButton.setTitle(manufacturer, for: .normal)
         yearButton.setTitle(year, for: .normal)
-        horsepowerButton.setTitle(String(horsePower), for: .normal)
+        horsepowerButton.setTitle(horsePower, for: .normal)
         
-        selectedManufacturer = "Audi"
-        selectedYear = "2006"
-        selectedHorsePower = 224
+        selectedManufacturer = "Citroen"
+        selectedYear = "2000"
+        selectedHorsePower = 90
     }
     
     func initiateValues() {
@@ -185,11 +182,31 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         } else {
             
             if isEditMode! {
-                //save element
+                car?.imagePath = (self.car?.imagePath)!
+                car?.manufacturer = selectedManufacturer
+                car?.model = modelTextField.text!
+                car?.hp = selectedHorsePower
+                car?.year = selectedYear
+                car?.summary = summaryTextView.text
+                car?.secondHand = switchTurnSecondHand.isOn
+                _ = self.navigationController?.popViewController(animated: true)
             } else {
-                //add element
+                let car = Car()
+                car.imagePath = "new_car_image.jpg"
+                car.manufacturer = selectedManufacturer
+                car.model = modelTextField.text!
+                car.hp = selectedHorsePower
+                car.year = selectedYear
+                car.summary = summaryTextView.text
+                car.secondHand = switchTurnSecondHand.isOn
+                cars.add(car)
+                _ = self.navigationController?.popViewController(animated: true)
             }
         }
+    }
+    
+    @IBAction func cancelButtonPressed(_ sender: Any) {
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -217,25 +234,25 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
             return yearsArray[row]
             
         } else { pickerView.isEqual(horsepowerPicker)
-            return "\(horsePowerArray[row])"
+            return String(horsePowerArray[row])
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         if pickerView.isEqual(manufacturerPicker) {
-            manufacturerButton.setTitle(manufactArray[row], for: UIControlState.normal)
+            manufacturerButton.setTitle(manufactArray[row], for: .normal)
             selectedManufacturer = manufactArray[row]
             hidePicker(pickerView: manufacturerPicker, heightConstraint: manufacturerPickerHeightConstraint)
             
         } else if pickerView.isEqual(yearPicker) {
-            yearButton.setTitle(yearsArray[row], for: UIControlState.normal)
+            yearButton.setTitle(yearsArray[row], for: .normal)
             selectedYear = yearsArray[row]
             hidePicker(pickerView: yearPicker, heightConstraint: yearPickerHeightConstraint)
         }
         
         if  pickerView.isEqual(horsepowerPicker) {
-            horsepowerButton.setTitle("\(horsePowerArray[row])", for: UIControlState.normal)
+            horsepowerButton.setTitle(String(horsePowerArray[row]), for: .normal)
             selectedHorsePower = horsePowerArray[row]
             hidePicker(pickerView: horsepowerPicker, heightConstraint: horsePowerHeightConstraint)
         }
