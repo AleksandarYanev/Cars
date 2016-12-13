@@ -29,7 +29,7 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     var cars : NSMutableArray!
     var index : Int!
     
-    let manufactArray = ["Audi", "Bmw", "Citroen", "Opel", "Peugeot", "Volkswagen", "Volvo"]
+    let manufactArray = ["Audi", "BMW", "Citroen", "Opel", "Peugeot", "Volkswagen", "Volvo"]
     var selectedManufacturer = "Citroen"
     var yearsArray = [String]()
     var selectedYear = "2000"
@@ -57,8 +57,6 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
             isEditMode = false
             presetNoCarValues()
         }
-        
-        initiateValues()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,8 +87,10 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
             switchTurnSecondHand.isOn = false
         }
         
-        modelTextField.placeholder = car?.model
+        modelTextField.text = car?.model
         summaryTextView.text = car?.summary
+        
+        initiateValues()
     }
     
     func presetValues(withCar : Car) {

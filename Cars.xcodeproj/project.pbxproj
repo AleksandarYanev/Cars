@@ -12,10 +12,10 @@
 		D14CE2631DDF12590045D612 /* CarDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14CE2621DDF12590045D612 /* CarDetailsViewController.swift */; };
 		D1A7936B1DF985D6003E9DC5 /* BorderedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A7936A1DF985D6003E9DC5 /* BorderedTextView.swift */; };
 		D1AB1D931DDDD576002DA6FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AB1D921DDDD576002DA6FB /* AppDelegate.swift */; };
-		D1AB1D951DDDD576002DA6FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AB1D941DDDD576002DA6FB /* ViewController.swift */; };
+		D1AB1D951DDDD576002DA6FB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AB1D941DDDD576002DA6FB /* HomeViewController.swift */; };
 		D1AB1D9A1DDDD576002DA6FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1AB1D991DDDD576002DA6FB /* Assets.xcassets */; };
 		D1AB1D9D1DDDD576002DA6FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1AB1D9B1DDDD576002DA6FB /* LaunchScreen.storyboard */; };
-		D1AB1DA81DDDD8E6002DA6FB /* CarViewClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AB1DA71DDDD8E6002DA6FB /* CarViewClass.swift */; };
+		D1AB1DA81DDDD8E6002DA6FB /* CarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AB1DA71DDDD8E6002DA6FB /* CarTableViewCell.swift */; };
 		D1AB1DAD1DDDFEFB002DA6FB /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AB1DAC1DDDFEFB002DA6FB /* Car.swift */; };
 		D1AF19041DE3444000B6409B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1AF19031DE3444000B6409B /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -27,11 +27,11 @@
 		D1A7936A1DF985D6003E9DC5 /* BorderedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedTextView.swift; sourceTree = "<group>"; };
 		D1AB1D8F1DDDD576002DA6FB /* Cars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1AB1D921DDDD576002DA6FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D1AB1D941DDDD576002DA6FB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D1AB1D941DDDD576002DA6FB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D1AB1D991DDDD576002DA6FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D1AB1D9C1DDDD576002DA6FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D1AB1D9E1DDDD576002DA6FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D1AB1DA71DDDD8E6002DA6FB /* CarViewClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarViewClass.swift; sourceTree = "<group>"; };
+		D1AB1DA71DDDD8E6002DA6FB /* CarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTableViewCell.swift; sourceTree = "<group>"; };
 		D1AB1DAC1DDDFEFB002DA6FB /* Car.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		D1AF19031DE3444000B6409B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,14 +66,14 @@
 		D1AB1D911DDDD576002DA6FB /* Cars */ = {
 			isa = PBXGroup;
 			children = (
-				D1AB1DA61DDDD58D002DA6FB /* Model */,
-				D1AB1DA51DDDD588002DA6FB /* View */,
-				D1AB1DA41DDDD582002DA6FB /* Controller */,
+				D1AB1D9E1DDDD576002DA6FB /* Info.plist */,
+				D1AF19031DE3444000B6409B /* Main.storyboard */,
 				D1AB1D921DDDD576002DA6FB /* AppDelegate.swift */,
 				D1AB1D991DDDD576002DA6FB /* Assets.xcassets */,
-				D1AF19031DE3444000B6409B /* Main.storyboard */,
+				D1AB1DA41DDDD582002DA6FB /* Controller */,
 				D1AB1D9B1DDDD576002DA6FB /* LaunchScreen.storyboard */,
-				D1AB1D9E1DDDD576002DA6FB /* Info.plist */,
+				D1AB1DA61DDDD58D002DA6FB /* Model */,
+				D1AB1DA51DDDD588002DA6FB /* View */,
 			);
 			path = Cars;
 			sourceTree = "<group>";
@@ -81,7 +81,7 @@
 		D1AB1DA41DDDD582002DA6FB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D1AB1D941DDDD576002DA6FB /* ViewController.swift */,
+				D1AB1D941DDDD576002DA6FB /* HomeViewController.swift */,
 				D14CE25C1DDF07470045D612 /* LoginViewController.swift */,
 				D14CE2601DDF120C0045D612 /* NewOrEditViewController.swift */,
 				D14CE2621DDF12590045D612 /* CarDetailsViewController.swift */,
@@ -92,7 +92,7 @@
 		D1AB1DA51DDDD588002DA6FB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D1AB1DA71DDDD8E6002DA6FB /* CarViewClass.swift */,
+				D1AB1DA71DDDD8E6002DA6FB /* CarTableViewCell.swift */,
 				D1A7936A1DF985D6003E9DC5 /* BorderedTextView.swift */,
 			);
 			name = View;
@@ -133,7 +133,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = AleksandarYanev;
 				TargetAttributes = {
 					D1AB1D8E1DDDD576002DA6FB = {
@@ -181,8 +181,8 @@
 				D1A7936B1DF985D6003E9DC5 /* BorderedTextView.swift in Sources */,
 				D14CE2611DDF120C0045D612 /* NewOrEditViewController.swift in Sources */,
 				D14CE2631DDF12590045D612 /* CarDetailsViewController.swift in Sources */,
-				D1AB1DA81DDDD8E6002DA6FB /* CarViewClass.swift in Sources */,
-				D1AB1D951DDDD576002DA6FB /* ViewController.swift in Sources */,
+				D1AB1DA81DDDD8E6002DA6FB /* CarTableViewCell.swift in Sources */,
+				D1AB1D951DDDD576002DA6FB /* HomeViewController.swift in Sources */,
 				D1AB1DAD1DDDFEFB002DA6FB /* Car.swift in Sources */,
 				D14CE25D1DDF07470045D612 /* LoginViewController.swift in Sources */,
 				D1AB1D931DDDD576002DA6FB /* AppDelegate.swift in Sources */,
@@ -221,6 +221,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -271,6 +272,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

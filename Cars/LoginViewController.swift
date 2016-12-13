@@ -14,6 +14,23 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextOutlet: UITextField!
     @IBOutlet weak var passwordFieldOutlet: UITextField!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.navigationItem.title = "Login"
+        
+        let defaults = UserDefaults.standard
+        
+        if let isLogged = defaults.object(forKey: "isLogged") as? Bool, let userNameField = defaults.object(forKey: "userNameKey") as? String, let passwordField = defaults.object(forKey: "passwordKey") as? String {
+            
+            navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+            
+            if isLogged == true && userNameField == "test@test.com" && passwordField == "test123" {
+                self.navigationController?.pushViewController(self.storyboard!.instantiateViewController(withIdentifier: "ViewController"), animated: true)
+            }
+        }
+    }
+    
     func saveLogin() {
         
         let defaults = UserDefaults.standard
@@ -46,27 +63,6 @@ class LoginViewController: UIViewController {
             let alert = UIAlertController(title: "Warning", message: "Wrong email or password!", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-    }
-}
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.navigationItem.title = "Login"
-        
-        let defaults = UserDefaults.standard
-        
-        if let isLogged = defaults.object(forKey: "isLogged") as? Bool, let userNameField = defaults.object(forKey: "userNameKey") as? String, let passwordField = defaults.object(forKey: "passwordKey") as? String {
-            
-            navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-            
-            if isLogged == true && userNameField == "test@test.com" && passwordField == "test123" {
-                self.navigationController?.pushViewController(self.storyboard!.instantiateViewController(withIdentifier: "ViewController"), animated: true)
-            }
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 }

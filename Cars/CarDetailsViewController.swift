@@ -18,11 +18,8 @@ class CarDetailsViewController: UIViewController {
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var secondHandLabel: UILabel!
 
-    let carsCount = 1
-
     var cars : NSMutableArray!
     var index : Int!
-
     var car : Car!
 
     override func viewDidLoad() {
@@ -53,8 +50,6 @@ class CarDetailsViewController: UIViewController {
     }
     
     @IBAction func deleteButtonPressed(_ sender: UIBarButtonItem) {
-        let car = Car()
-        cars.add(car)
         cars.removeObject(at: index)
         _ = self.navigationController?.popViewController(animated: true)
     }

@@ -8,12 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
 
     var cars = NSMutableArray()
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,7 +94,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: "carCell", for: indexPath) as! CarViewClass
+        let cell = tableView.dequeueReusableCell(withIdentifier: "carCell", for: indexPath) as! CarTableViewCell
 
         let car = cars[indexPath.row] as! Car
 
@@ -109,16 +108,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
 
-    public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
-    {
+    public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
 
-    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
-    {
-        if editingStyle == .delete
-        {
-            cars.remove(at: indexPath.row)
+    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            cars.removeObject(at: indexPath.row)
             tableView.reloadData()
         }
     }
@@ -128,7 +125,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         carsViewController.cars = cars
         carsViewController.index = indexPath.row
 
-        
         self.navigationController?.pushViewController(carsViewController, animated: true)
     }
 }
