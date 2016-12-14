@@ -8,8 +8,10 @@
 
 import UIKit
 
-class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, UITextViewDelegate {
     
+    @IBOutlet weak var bottomLayoutScrollView: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var newCarImageView: UIImageView!
     @IBOutlet weak var horsepowerPicker: UIPickerView!
     @IBOutlet weak var manufacturerPicker: UIPickerView!
@@ -41,11 +43,55 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         
         manufacturerPicker.dataSource = self
         manufacturerPicker.delegate = self
+        
         yearPicker.dataSource = self
         yearPicker.delegate = self
+        
         horsepowerPicker.dataSource = self
         horsepowerPicker.delegate = self
         
+        modelTextField.delegate = self
+        summaryTextView.delegate = self
+        
+        presetNoCarValues()
+        setDefaultValues()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        declareArrays()
+        setImageForScreens()
+        initiateValues()
+        checkSwitch()
+        dissmissKeyboardOnTouch()
+        //registerKeyboardNotifications()
+        
+        modelTextField.text = car?.model
+        summaryTextView.text = car?.summary
+    }
+    
+    func keyboardWillShow(notification:NSNotification){
+        //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
+        var userInfo = notification.userInfo!
+        var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        
+        var contentInset:UIEdgeInsets = self.scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height
+        self.scrollView.contentInset = contentInset
+    }
+    
+    func keyboardWillHide(notification:NSNotification){
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        self.scrollView.contentInset = contentInset
+    }
+    
+    
+    func setDefaultValues() {
         if let cars = self.cars, let index = self.index {
             car = cars[index] as? Car
         }
@@ -59,9 +105,7 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
+    func setImageForScreens() {
         if isEditMode! {
             
             self.navigationItem.title = "Edit Car"
@@ -72,7 +116,9 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
             self.navigationItem.title = "New Car"
             newCarImageView.image = UIImage(named: "new_car_image.jpg")
         }
-        
+    }
+    
+    func declareArrays() {
         for yearNumber in 1980...2016 {
             yearsArray.append("\(yearNumber)")
         }
@@ -80,21 +126,17 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         for horsepowerNumber in 50...500 {
             horsePowerArray.append(horsepowerNumber)
         }
-        
+    }
+    
+    func checkSwitch() {
         if let isSecondhand = car, isSecondhand.secondHand {
             switchTurnSecondHand.isOn = true
         } else {
             switchTurnSecondHand.isOn = false
         }
-        
-        modelTextField.text = car?.model
-        summaryTextView.text = car?.summary
-        
-        initiateValues()
     }
     
     func presetValues(withCar : Car) {
-        
         let manufacturer = withCar.manufacturer
         let year = withCar.year
         let horsePower = withCar.hp
@@ -109,7 +151,6 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     }
     
     func presetNoCarValues() {
-        
         let manufacturer = "Manufacturer"
         let year = "Year"
         let horsePower = "Horsepower"
@@ -155,7 +196,6 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     }
     
     @IBAction func yearButtonPressed(_ sender: UIButton) {
-        
         if(yearPicker.isHidden) {
             showPicker(pickerView: yearPicker, heightConstraint: yearPickerHeightConstraint)
         } else {
@@ -164,7 +204,6 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     }
     
     @IBAction func horsePowerButtonPressed(_ sender: UIButton) {
-        
         if(horsepowerPicker.isHidden) {
             showPicker(pickerView: horsepowerPicker, heightConstraint: horsePowerHeightConstraint)
         } else {
@@ -173,7 +212,6 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     }
     
     @IBAction func saveButton(_ sender: Any) {
-        
         if modelTextField.text == "" || manufacturerButton.title(for: .normal) == "Manufacturer" || yearButton.title(for: .normal) == "Year" || horsepowerButton.title(for: .normal) == "Horsepower" {
             
             let alert = UIAlertController(title: "Warning", message: "Some of mandatory fields are not selected!", preferredStyle: UIAlertControllerStyle.alert)
@@ -239,7 +277,6 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
         if pickerView.isEqual(manufacturerPicker) {
             manufacturerButton.setTitle(manufactArray[row], for: .normal)
             selectedManufacturer = manufactArray[row]
@@ -256,5 +293,25 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
             selectedHorsePower = horsePowerArray[row]
             hidePicker(pickerView: horsepowerPicker, heightConstraint: horsePowerHeightConstraint)
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            view.endEditing(true)
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    func dissmissKeyboardOnTouch() {
+        let tapper = UITapGestureRecognizer(target: view, action: #selector(view.endEditing))
+        tapper.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapper)
     }
 }

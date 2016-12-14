@@ -55,7 +55,6 @@ class CarDetailsViewController: UIViewController {
     }
     
     @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
-        
         if let editVC = storyboard?.instantiateViewController(withIdentifier: "NewOrEditViewController") as? NewOrEditViewController {
             editVC.cars = cars
             editVC.index = index

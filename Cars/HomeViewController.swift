@@ -27,8 +27,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        // self.navigationItem.setHidesBackButton(true, animated:true)
-        
+                
         self.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItem = nil
         
@@ -66,7 +65,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func addBtnPressed(_ sender: UIBarButtonItem) {
-        
         if let addEdit = storyboard?.instantiateViewController(withIdentifier: "NewOrEditViewController") as? NewOrEditViewController {
             addEdit.cars = cars
             navigationController?.pushViewController(addEdit, animated: true)
@@ -88,12 +86,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return cars.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "carCell", for: indexPath) as! CarTableViewCell
         
         let car = cars[indexPath.row] as! Car
@@ -113,7 +109,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
         if editingStyle == .delete {
             cars.removeObject(at: indexPath.row)
             tableView.reloadData()
