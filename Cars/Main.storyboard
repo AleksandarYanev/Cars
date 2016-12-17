@@ -138,7 +138,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eTI-Xu-tuS" id="RRd-c1-43a">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DOT-kU-SjH">
@@ -214,7 +214,7 @@
                     <navigationItem key="navigationItem" id="uii-zR-eTs">
                         <barButtonItem key="rightBarButtonItem" title="Add Car" id="eum-XN-haJ">
                             <connections>
-                                <action selector="addBtnPressed:" destination="BYZ-38-t0r" id="Ysu-fX-DV0"/>
+                                <segue destination="1qU-r5-Pvc" kind="show" identifier="openAddCarSegue" id="wGa-wW-g1f"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -230,7 +230,7 @@
         <!--New Or Edit View Controller-->
         <scene sceneID="gdT-US-rq9">
             <objects>
-                <viewController storyboardIdentifier="NewOrEditViewController" id="1qU-r5-Pvc" customClass="NewOrEditViewController" customModule="Cars" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewOrEditViewController" automaticallyAdjustsScrollViewInsets="NO" id="1qU-r5-Pvc" customClass="NewOrEditViewController" customModule="Cars" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="08J-Os-yzm"/>
                         <viewControllerLayoutGuide type="bottom" id="UnG-Cc-HN4"/>
@@ -240,9 +240,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bn5-6x-T93">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2h-Hf-pPz">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2h-Hf-pPz">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="507"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R0p-xQ-tE2">
@@ -389,16 +389,16 @@
                                     <constraint firstItem="U2h-Hf-pPz" firstAttribute="width" secondItem="bn5-6x-T93" secondAttribute="width" id="0i2-aU-Ljd"/>
                                     <constraint firstItem="U2h-Hf-pPz" firstAttribute="leading" secondItem="bn5-6x-T93" secondAttribute="leading" id="Ldd-B3-AcY"/>
                                     <constraint firstAttribute="trailing" secondItem="U2h-Hf-pPz" secondAttribute="trailing" id="aIC-26-lFa"/>
-                                    <constraint firstItem="U2h-Hf-pPz" firstAttribute="top" secondItem="bn5-6x-T93" secondAttribute="top" id="c3p-6d-gmT"/>
                                     <constraint firstAttribute="bottom" secondItem="U2h-Hf-pPz" secondAttribute="bottom" id="cPk-X0-hUx"/>
+                                    <constraint firstItem="U2h-Hf-pPz" firstAttribute="top" secondItem="bn5-6x-T93" secondAttribute="top" id="ej4-qn-aXE"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="bn5-6x-T93" firstAttribute="top" secondItem="hNs-Ox-egC" secondAttribute="top" id="Edj-E8-ZZU"/>
                             <constraint firstItem="UnG-Cc-HN4" firstAttribute="top" secondItem="bn5-6x-T93" secondAttribute="bottom" id="FZL-Sh-qaV"/>
                             <constraint firstItem="bn5-6x-T93" firstAttribute="leading" secondItem="hNs-Ox-egC" secondAttribute="leading" id="Kbt-8V-eqS"/>
+                            <constraint firstItem="bn5-6x-T93" firstAttribute="top" secondItem="08J-Os-yzm" secondAttribute="bottom" id="iNA-PB-A3m"/>
                             <constraint firstAttribute="trailing" secondItem="bn5-6x-T93" secondAttribute="trailing" id="vFP-XZ-9pG"/>
                         </constraints>
                     </view>

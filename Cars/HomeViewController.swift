@@ -27,7 +27,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-                
+        
         self.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItem = nil
         
@@ -64,10 +64,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         cars.add(volvoC70)
     }
     
-    @IBAction func addBtnPressed(_ sender: UIBarButtonItem) {
-        if let addEdit = storyboard?.instantiateViewController(withIdentifier: "NewOrEditViewController") as? NewOrEditViewController {
-            addEdit.cars = cars
-            navigationController?.pushViewController(addEdit, animated: true)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "openAddCarSegue" {
+            
+            if segue.destination is NewOrEditViewController {
+                let viewController = segue.destination as? NewOrEditViewController
+                viewController?.cars = cars
+            }
         }
     }
     

@@ -68,13 +68,12 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         initiateValues()
         checkSwitch()
         dissmissKeyboardOnTouch()
-        //registerKeyboardNotifications()
         
         modelTextField.text = car?.model
         summaryTextView.text = car?.summary
     }
     
-    func keyboardWillShow(notification:NSNotification){
+    func keyboardWillShow(notification:NSNotification) {
         //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
         var userInfo = notification.userInfo!
         var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
@@ -85,11 +84,10 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         self.scrollView.contentInset = contentInset
     }
     
-    func keyboardWillHide(notification:NSNotification){
+    func keyboardWillHide(notification:NSNotification) {
         let contentInset:UIEdgeInsets = UIEdgeInsets.zero
         self.scrollView.contentInset = contentInset
     }
-    
     
     func setDefaultValues() {
         if let cars = self.cars, let index = self.index {
@@ -299,6 +297,7 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         textField.resignFirstResponder()
         return true
     }
+
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if(text == "\n") {
