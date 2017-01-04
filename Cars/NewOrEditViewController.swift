@@ -28,7 +28,7 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     
     var car: Car?
     var isEditMode: Bool!
-    var cars : NSMutableArray!
+    var cars : Array<Car>!
     var index : Int!
     
     let manufactArray = ["Audi", "BMW", "Citroen", "Opel", "Peugeot", "Volkswagen", "Volvo"]
@@ -91,7 +91,7 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     
     func setDefaultValues() {
         if let cars = self.cars, let index = self.index {
-            car = cars[index] as? Car
+            car = cars[index]
         }
         
         if car != nil {
@@ -107,7 +107,7 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         if isEditMode! {
             
             self.navigationItem.title = "Edit Car"
-            newCarImageView.image = UIImage(named: (car?.imagePath)!)
+            newCarImageView.image = car?.image as? UIImage
             
         } else if !isEditMode {
             
@@ -137,15 +137,15 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     func presetValues(withCar : Car) {
         let manufacturer = withCar.manufacturer
         let year = withCar.year
-        let horsePower = withCar.hp
+        let horsePower = withCar.horsepower
         
         manufacturerButton.setTitle(manufacturer, for: .normal)
         yearButton.setTitle(year, for: .normal)
         horsepowerButton.setTitle(String(horsePower), for: .normal)
         
-        selectedManufacturer = withCar.manufacturer
-        selectedYear = withCar.year
-        selectedHorsePower = withCar.hp
+        selectedManufacturer = withCar.manufacturer!
+        selectedYear = withCar.year!
+        selectedHorsePower = Int(withCar.horsepower)
     }
     
     func presetNoCarValues() {
@@ -210,6 +210,11 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     }
     
     @IBAction func saveButton(_ sender: Any) {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        
         if modelTextField.text == "" || manufacturerButton.title(for: .normal) == "Manufacturer" || yearButton.title(for: .normal) == "Year" || horsepowerButton.title(for: .normal) == "Horsepower" {
             
             let alert = UIAlertController(title: "Warning", message: "Some of mandatory fields are not selected!", preferredStyle: UIAlertControllerStyle.alert)
@@ -218,24 +223,29 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         } else {
             
             if isEditMode! {
-                car?.imagePath = (self.car?.imagePath)!
+                car?.image = (self.car?.image)!
                 car?.manufacturer = selectedManufacturer
                 car?.model = modelTextField.text!
-                car?.hp = selectedHorsePower
+                car?.horsepower = Int64(selectedHorsePower)
                 car?.year = selectedYear
                 car?.summary = summaryTextView.text
                 car?.secondHand = switchTurnSecondHand.isOn
+                
+                appDelegate.saveContext()
                 _ = self.navigationController?.popViewController(animated: true)
+                
             } else {
-                let car = Car()
-                car.imagePath = "new_car_image.jpg"
+                let car = Car(context: context)
+                car.image = #imageLiteral(resourceName: "new_car_image")
                 car.manufacturer = selectedManufacturer
                 car.model = modelTextField.text!
-                car.hp = selectedHorsePower
+                car.horsepower = Int64(selectedHorsePower)
                 car.year = selectedYear
                 car.summary = summaryTextView.text
                 car.secondHand = switchTurnSecondHand.isOn
-                cars.add(car)
+                cars.append(car)
+                
+                appDelegate.saveContext()
                 _ = self.navigationController?.popViewController(animated: true)
             }
         }

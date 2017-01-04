@@ -18,27 +18,27 @@ class CarDetailsViewController: UIViewController {
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var secondHandLabel: UILabel!
     
-    var cars : NSMutableArray!
+    var cars : Array<Car>!
     var index : Int!
     var car : Car!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "Car Details"
+    	    self.navigationItem.title = "Car Details"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         if let cars = self.cars, let index = self.index {
-            car = cars[index] as! Car
+            car = cars[index]
             
-            manufacturerOutlet.text = "Manufacturer: \(car.manufacturer)"
-            imageCarDetail.image = UIImage(named: (car.imagePath))
-            modelLabel.text = "Model: \(car.model)"
-            hpLabel.text = "Horse power: \(car.hp)"
-            yearLabel.text = "Year: \(car.year)"
-            summaryLabel.text = "\(car.summary)"
+            manufacturerOutlet.text = "Manufacturer: \(car.manufacturer!)"
+            imageCarDetail.image = car.image! as? UIImage
+            modelLabel.text = "Model: \(car.model!)"
+            hpLabel.text = "Horse power: \(car.horsepower)"
+            yearLabel.text = "Year: \(car.year!)"
+            summaryLabel.text = "\(car.summary!)"
             secondHandLabel.text = "Second hand: \(car.secondHand)"
             
             if !car.secondHand {
@@ -50,7 +50,14 @@ class CarDetailsViewController: UIViewController {
     }
     
     @IBAction func deleteButtonPressed(_ sender: UIBarButtonItem) {
-        cars.removeObject(at: index)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        if car != nil {
+            context.delete(car!)
+            appDelegate.saveContext()
+        }
+        cars.remove(at: index)
         _ = self.navigationController?.popViewController(animated: true)
     }
     

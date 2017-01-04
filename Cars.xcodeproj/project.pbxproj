@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D12B84341E0C1F8000AF2DDA /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D12B84321E0C1F8000AF2DDA /* Model.xcdatamodeld */; };
+		D12B84341E0C1F8000AF2DDA /* Cars.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D12B84321E0C1F8000AF2DDA /* Cars.xcdatamodeld */; };
 		D14CE25D1DDF07470045D612 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14CE25C1DDF07470045D612 /* LoginViewController.swift */; };
 		D14CE2611DDF120C0045D612 /* NewOrEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14CE2601DDF120C0045D612 /* NewOrEditViewController.swift */; };
 		D14CE2631DDF12590045D612 /* CarDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14CE2621DDF12590045D612 /* CarDetailsViewController.swift */; };
@@ -17,12 +17,11 @@
 		D1AB1D9A1DDDD576002DA6FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1AB1D991DDDD576002DA6FB /* Assets.xcassets */; };
 		D1AB1D9D1DDDD576002DA6FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1AB1D9B1DDDD576002DA6FB /* LaunchScreen.storyboard */; };
 		D1AB1DA81DDDD8E6002DA6FB /* CarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AB1DA71DDDD8E6002DA6FB /* CarTableViewCell.swift */; };
-		D1AB1DAD1DDDFEFB002DA6FB /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AB1DAC1DDDFEFB002DA6FB /* Car.swift */; };
 		D1AF19041DE3444000B6409B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1AF19031DE3444000B6409B /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D12B84331E0C1F8000AF2DDA /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		D12B84331E0C1F8000AF2DDA /* Cars.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cars.xcdatamodel; sourceTree = "<group>"; };
 		D14CE25C1DDF07470045D612 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D14CE2601DDF120C0045D612 /* NewOrEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewOrEditViewController.swift; sourceTree = "<group>"; };
 		D14CE2621DDF12590045D612 /* CarDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarDetailsViewController.swift; sourceTree = "<group>"; };
@@ -34,7 +33,6 @@
 		D1AB1D9C1DDDD576002DA6FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D1AB1D9E1DDDD576002DA6FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1AB1DA71DDDD8E6002DA6FB /* CarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTableViewCell.swift; sourceTree = "<group>"; };
-		D1AB1DAC1DDDFEFB002DA6FB /* Car.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		D1AF19031DE3444000B6409B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,7 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				D1AB1D9E1DDDD576002DA6FB /* Info.plist */,
-				D12B84321E0C1F8000AF2DDA /* Model.xcdatamodeld */,
+				D12B84321E0C1F8000AF2DDA /* Cars.xcdatamodeld */,
 				D1AF19031DE3444000B6409B /* Main.storyboard */,
 				D1AB1D921DDDD576002DA6FB /* AppDelegate.swift */,
 				D1AB1D991DDDD576002DA6FB /* Assets.xcassets */,
@@ -104,7 +102,6 @@
 		D1AB1DA61DDDD58D002DA6FB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D1AB1DAC1DDDFEFB002DA6FB /* Car.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -186,8 +183,7 @@
 				D14CE2631DDF12590045D612 /* CarDetailsViewController.swift in Sources */,
 				D1AB1DA81DDDD8E6002DA6FB /* CarTableViewCell.swift in Sources */,
 				D1AB1D951DDDD576002DA6FB /* HomeViewController.swift in Sources */,
-				D12B84341E0C1F8000AF2DDA /* Model.xcdatamodeld in Sources */,
-				D1AB1DAD1DDDFEFB002DA6FB /* Car.swift in Sources */,
+				D12B84341E0C1F8000AF2DDA /* Cars.xcdatamodeld in Sources */,
 				D14CE25D1DDF07470045D612 /* LoginViewController.swift in Sources */,
 				D1AB1D931DDDD576002DA6FB /* AppDelegate.swift in Sources */,
 			);
@@ -248,7 +244,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -293,7 +289,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -350,14 +346,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		D12B84321E0C1F8000AF2DDA /* Model.xcdatamodeld */ = {
+		D12B84321E0C1F8000AF2DDA /* Cars.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				D12B84331E0C1F8000AF2DDA /* Model.xcdatamodel */,
+				D12B84331E0C1F8000AF2DDA /* Cars.xcdatamodel */,
 			);
-			currentVersion = D12B84331E0C1F8000AF2DDA /* Model.xcdatamodel */;
-			name = Model.xcdatamodeld;
-			path = ../Model.xcdatamodeld;
+			currentVersion = D12B84331E0C1F8000AF2DDA /* Cars.xcdatamodel */;
+			name = Cars.xcdatamodeld;
+			path = ../Cars.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
