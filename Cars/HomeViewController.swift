@@ -23,8 +23,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         
-        loadCarsData()
+        getCars()
         
+        if cars.count > 0 {
+            
+            tableView.reloadData()
+        } else {
+            loadCarsData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,7 +41,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         getCars()
         tableView.reloadData()
-        
     }
     
     func loadCarsData() {
@@ -136,7 +141,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let car = cars[indexPath.row]
-
+        
         if editingStyle == .delete {
             
             context.delete(car)
