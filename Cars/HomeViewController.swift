@@ -31,6 +31,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         } else {
             loadCarsData()
         }
+        
+        print(CARS_URL)
     }
     
     override func viewWillAppear(_ animated: Bool) {

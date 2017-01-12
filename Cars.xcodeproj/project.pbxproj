@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		99C9373A7E12DEBF1A8DF69F /* Pods_Cars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31A1A85D7440904C8670B732 /* Pods_Cars.framework */; };
 		D12B84341E0C1F8000AF2DDA /* Cars.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D12B84321E0C1F8000AF2DDA /* Cars.xcdatamodeld */; };
 		D14CE25D1DDF07470045D612 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14CE25C1DDF07470045D612 /* LoginViewController.swift */; };
 		D14CE2611DDF120C0045D612 /* NewOrEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14CE2601DDF120C0045D612 /* NewOrEditViewController.swift */; };
@@ -18,9 +19,13 @@
 		D1AB1D9D1DDDD576002DA6FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1AB1D9B1DDDD576002DA6FB /* LaunchScreen.storyboard */; };
 		D1AB1DA81DDDD8E6002DA6FB /* CarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AB1DA71DDDD8E6002DA6FB /* CarTableViewCell.swift */; };
 		D1AF19041DE3444000B6409B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1AF19031DE3444000B6409B /* Main.storyboard */; };
+		D1CB01801E276A8800A5DED0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CB017F1E276A8800A5DED0 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31A1A85D7440904C8670B732 /* Pods_Cars.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cars.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DBE8CF1FD9A295AADD64E5D /* Pods-Cars.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cars.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cars/Pods-Cars.debug.xcconfig"; sourceTree = "<group>"; };
+		BCC5A45B8DF371C1D66B58F0 /* Pods-Cars.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cars.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cars/Pods-Cars.release.xcconfig"; sourceTree = "<group>"; };
 		D12B84331E0C1F8000AF2DDA /* Cars.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cars.xcdatamodel; sourceTree = "<group>"; };
 		D14CE25C1DDF07470045D612 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D14CE2601DDF120C0045D612 /* NewOrEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewOrEditViewController.swift; sourceTree = "<group>"; };
@@ -34,6 +39,7 @@
 		D1AB1D9E1DDDD576002DA6FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1AB1DA71DDDD8E6002DA6FB /* CarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTableViewCell.swift; sourceTree = "<group>"; };
 		D1AF19031DE3444000B6409B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		D1CB017F1E276A8800A5DED0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,17 +47,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99C9373A7E12DEBF1A8DF69F /* Pods_Cars.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38D25DD4E1D9C4596AF036E1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				31A1A85D7440904C8670B732 /* Pods_Cars.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		600FA1F99A037E315F147462 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4DBE8CF1FD9A295AADD64E5D /* Pods-Cars.debug.xcconfig */,
+				BCC5A45B8DF371C1D66B58F0 /* Pods-Cars.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D1AB1D861DDDD576002DA6FB = {
 			isa = PBXGroup;
 			children = (
 				D1AB1D911DDDD576002DA6FB /* Cars */,
 				D1AB1D901DDDD576002DA6FB /* Products */,
+				600FA1F99A037E315F147462 /* Pods */,
+				38D25DD4E1D9C4596AF036E1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +101,7 @@
 				D1AB1D9B1DDDD576002DA6FB /* LaunchScreen.storyboard */,
 				D1AB1DA61DDDD58D002DA6FB /* Model */,
 				D1AB1DA51DDDD588002DA6FB /* View */,
+				D1CB017F1E276A8800A5DED0 /* Constants.swift */,
 			);
 			path = Cars;
 			sourceTree = "<group>";
@@ -113,9 +140,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D1AB1DA11DDDD576002DA6FB /* Build configuration list for PBXNativeTarget "Cars" */;
 			buildPhases = (
+				3744EB12ED88901D2AC19A67 /* [CP] Check Pods Manifest.lock */,
 				D1AB1D8B1DDDD576002DA6FB /* Sources */,
 				D1AB1D8C1DDDD576002DA6FB /* Frameworks */,
 				D1AB1D8D1DDDD576002DA6FB /* Resources */,
+				E4142257D95F2DBF7028773F /* [CP] Embed Pods Frameworks */,
+				3AD4594C2AC6209F68C31751 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -173,6 +203,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3744EB12ED88901D2AC19A67 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3AD4594C2AC6209F68C31751 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cars/Pods-Cars-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4142257D95F2DBF7028773F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cars/Pods-Cars-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D1AB1D8B1DDDD576002DA6FB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -186,6 +264,7 @@
 				D12B84341E0C1F8000AF2DDA /* Cars.xcdatamodeld in Sources */,
 				D14CE25D1DDF07470045D612 /* LoginViewController.swift in Sources */,
 				D1AB1D931DDDD576002DA6FB /* AppDelegate.swift in Sources */,
+				D1CB01801E276A8800A5DED0 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,7 +379,9 @@
 		};
 		D1AB1DA21DDDD576002DA6FB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DBE8CF1FD9A295AADD64E5D /* Pods-Cars.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Cars/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -312,7 +393,9 @@
 		};
 		D1AB1DA31DDDD576002DA6FB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BCC5A45B8DF371C1D66B58F0 /* Pods-Cars.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Cars/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
