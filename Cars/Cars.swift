@@ -11,6 +11,7 @@ import Alamofire
 
 class Cars {
     
+
     var _manufacturer: String!
     var _model: String!
     var _secondHand: Bool!
@@ -57,13 +58,34 @@ class Cars {
         return _horsepower
     }
     
+ 
+    }
+    
     func downloadCarsDetails(completed: @escaping DownloadComplete) {
-        Alamofire.request(CARS_URL).responseJSON { response in
-            let result = response.result
-            
-            print(response)
+        
+        let user = "caustomediffelflestacout"
+        let password = "2a6726d41232bad414125d9aa2057d45f87d1042"
+        let credentialData = "\(user):\(password)".data(using: String.Encoding.utf8)!
+        let base64Credentials = credentialData.base64EncodedString(options: [])
+        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        
+        Alamofire.request(CARS_URL,
+                          method: .get,
+                          parameters: nil,
+                          encoding: URLEncoding.default,
+                          headers:headers)
+            .validate()
+            .responseJSON { response in
+                if response.result.value != nil{
+                    print(response)
+                }else{
+                    
+                }
+        
+//            let result = response.result
+//            print(response)
             
         }
        completed() 
     }
-}
+
