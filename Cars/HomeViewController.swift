@@ -14,9 +14,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     
     var cars = Array<Car>()
+    var carsDownload = Cars()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        carsDownload.downloadCarsDetails {
+            
+        }
         
         self.navigationItem.title = "Cars"
         
@@ -31,8 +36,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         } else {
             loadCarsData()
         }
-        
-        print(CARS_URL)
     }
     
     override func viewWillAppear(_ animated: Bool) {

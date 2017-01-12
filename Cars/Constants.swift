@@ -8,6 +8,7 @@
 
 import Foundation
 
+typealias DownloadComplete = () -> ()
 
-let CARS_URL = "https://bulberadev.cloudant.com/cars/_design/cars/_view/all"
+let CARS_URL = "https://bulberadev.cloudant.com/cars/_design/cars/_view/all/"
 
