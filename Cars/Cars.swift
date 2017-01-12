@@ -57,13 +57,31 @@ class Cars {
         return _horsepower
     }
     
-    func downloadCarsDetails(completed: @escaping DownloadComplete) {
-        Alamofire.request(CARS_URL).responseJSON { response in
-            let result = response.result
-            
-            print(response)
-            
+    func downloadCars(success: @escaping(Array<Car>) -> (), failure: @escaping() -> ()) {
+
+        let user: String = "caustomediffelflestacout"
+        let password: String = "2a6726d41232bad414125d9aa2057d45f87d1042"
+
+        Alamofire.request(CARS_URL).authenticate(user: user, password: password).responseJSON { response in
+
+            if response.result.isSuccess {
+                print("Success!")
+                if let result = response.result.value {
+                    print(result)
+
+
+                    let cars = Array<Car>()
+
+                    success(cars)
+                }
+            } else {
+                print("Error!")
+                print("Error message: " + (response.result.error?.localizedDescription)!)
+
+                failure()
+            }
+
         }
-       completed() 
+
     }
 }
