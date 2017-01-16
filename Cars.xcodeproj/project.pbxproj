@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		99C9373A7E12DEBF1A8DF69F /* Pods_Cars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31A1A85D7440904C8670B732 /* Pods_Cars.framework */; };
+		D12102581E2CC3A400858EFE /* CarsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12102571E2CC3A400858EFE /* CarsResponse.swift */; };
 		D12812EF1E27901F001416FC /* Cars.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12812EE1E27901F001416FC /* Cars.swift */; };
 		D12B84341E0C1F8000AF2DDA /* Cars.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D12B84321E0C1F8000AF2DDA /* Cars.xcdatamodeld */; };
 		D14CE25D1DDF07470045D612 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14CE25C1DDF07470045D612 /* LoginViewController.swift */; };
@@ -27,6 +28,7 @@
 		31A1A85D7440904C8670B732 /* Pods_Cars.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cars.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DBE8CF1FD9A295AADD64E5D /* Pods-Cars.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cars.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cars/Pods-Cars.debug.xcconfig"; sourceTree = "<group>"; };
 		BCC5A45B8DF371C1D66B58F0 /* Pods-Cars.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cars.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cars/Pods-Cars.release.xcconfig"; sourceTree = "<group>"; };
+		D12102571E2CC3A400858EFE /* CarsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarsResponse.swift; sourceTree = "<group>"; };
 		D12812EE1E27901F001416FC /* Cars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cars.swift; sourceTree = "<group>"; };
 		D12B84331E0C1F8000AF2DDA /* Cars.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cars.xcdatamodel; sourceTree = "<group>"; };
 		D14CE25C1DDF07470045D612 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				D1AF19031DE3444000B6409B /* Main.storyboard */,
 				D1AB1D921DDDD576002DA6FB /* AppDelegate.swift */,
 				D12812EE1E27901F001416FC /* Cars.swift */,
+				D12102571E2CC3A400858EFE /* CarsResponse.swift */,
 				D1CB017F1E276A8800A5DED0 /* Constants.swift */,
 				D1AB1D991DDDD576002DA6FB /* Assets.xcassets */,
 				D1AB1DA41DDDD582002DA6FB /* Controller */,
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1A7936B1DF985D6003E9DC5 /* BorderedTextView.swift in Sources */,
+				D12102581E2CC3A400858EFE /* CarsResponse.swift in Sources */,
 				D14CE2611DDF120C0045D612 /* NewOrEditViewController.swift in Sources */,
 				D12812EF1E27901F001416FC /* Cars.swift in Sources */,
 				D14CE2631DDF12590045D612 /* CarDetailsViewController.swift in Sources */,

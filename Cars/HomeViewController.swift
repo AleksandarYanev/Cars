@@ -18,20 +18,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        carsDownload.downloadCars(success: { cars in
-            // all is successful
-            self.cars = cars
-
-        }, failure: {
-            // show something is wrong dran dran
-        })
-
-
-
+        
         self.navigationItem.title = "Cars"
-
-
-
+        
         tableView.delegate = self
         tableView.dataSource = self
 
@@ -48,6 +37,51 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
 
+        //carsDownload.requestAndMapCars(success: { (cars) in
+         //   self.cars.append(contentsOf: cars)
+         //   self.tableView.reloadData()
+       // }, failure: {
+       //     let alert = UIAlertController(title: "Error", message: "There is no data downloaded!", preferredStyle: .alert)
+       //     alert.addAction(UIAlertAction(title: "Continue offline", style: .default, handler: nil))
+       //     self.present(alert, animated: true, completion: nil)
+       //     print("error")
+       // })
+        
+        carsDownload.requestAndMapCars(success: { (response) in
+            
+            if let rows = response.rows {
+            
+            for row in rows {
+                
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                let context = appDelegate.persistentContainer.viewContext
+                let car = Car(context: context)
+                
+                car.id = row.value?.id
+                car.rev = row.value?.rev
+                car.manufacturer = row.value?.manufacturer
+                car.model = row.value?.model
+                car.secondHand = row.value?.secondHand ?? false
+                car.summary = row.value?.summary
+                car.year = row.value?.year
+                car.horsepower = row.value?.horsepower ?? 0
+                car.image = UIImage(named: "new_car_image")
+                
+                self.cars.append(car)
+                
+//                appDelegate.saveContext()
+                }
+                self.tableView.reloadData()
+            }
+            
+        }, failure: {
+            
+            let alert = UIAlertController(title: "Error", message: "There is no data downloaded!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Continue offline", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            print("error")
+        })
+        
         self.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItem = nil
 
@@ -96,7 +130,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         car.manufacturer = manufacturer
         car.model = model
         car.year = year
-        car.horsepower = Int64(hp)
+        car.horsepower = Int32(hp)
         car.summary = summary
         car.secondHand = secondHand
         car.image = UIImage(named: imagePath)

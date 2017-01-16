@@ -209,6 +209,8 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         }
     }
     
+    
+    
     @IBAction func saveButton(_ sender: Any) {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -226,12 +228,15 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
                 car?.image = (self.car?.image)!
                 car?.manufacturer = selectedManufacturer
                 car?.model = modelTextField.text!
-                car?.horsepower = Int64(selectedHorsePower)
+                car?.horsepower = Int32(selectedHorsePower)
                 car?.year = selectedYear
                 car?.summary = summaryTextView.text
                 car?.secondHand = switchTurnSecondHand.isOn
                 
+                
+                
                 appDelegate.saveContext()
+                
                 _ = self.navigationController?.popViewController(animated: true)
                 
             } else {
@@ -239,7 +244,7 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
                 car.image = #imageLiteral(resourceName: "new_car_image")
                 car.manufacturer = selectedManufacturer
                 car.model = modelTextField.text!
-                car.horsepower = Int64(selectedHorsePower)
+                car.horsepower = Int32(selectedHorsePower)
                 car.year = selectedYear
                 car.summary = summaryTextView.text
                 car.secondHand = switchTurnSecondHand.isOn

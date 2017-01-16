@@ -7,4 +7,6 @@ target 'Cars' do
 
   # Pods for Cars
   pod 'Alamofire'
+  pod 'AlamofireObjectMapper', '~> 4.0'
+  pod 'ObjectMapper', '~> 2.2'
 end

@@ -8,84 +8,164 @@
 
 import Foundation
 import Alamofire
+import AlamofireObjectMapper
 
 class Cars {
     
-
-    var _manufacturer: String!
-    var _model: String!
-    var _secondHand: Bool!
-    var _summary: String!
-    var _year: String!
-    var _horsepower: Int!
+    var cars = Array<Car>()
     
-    var manufacturer: String {
-        if _manufacturer == nil {
-            _manufacturer = ""
-        }
-        return _manufacturer
-    }
-    
-    var model: String {
-        if _model == nil {
-            _model = ""
-        }
-        return _model
-    }
-    
-    var secondHand: Bool {
-        return _secondHand
-    }
-    
-    var summary: String {
-        if _summary == nil {
-            _summary = ""
-        }
-        return _summary
-    }
-    
-    var year: String {
-        if _year == nil {
-            _year = ""
-        }
-        return _year
-    }
-    
-    var horsepower: Int {
-        if _horsepower == nil {
-            _horsepower = 0
-        }
-        return _horsepower
-    }
-    
- 
-    }
-    
-    func downloadCarsDetails(completed: @escaping DownloadComplete) {
+    func requestAndMapCars(success: @escaping (CarResponse) -> (), failure: @escaping () -> ()) {
         
         let user = "caustomediffelflestacout"
         let password = "2a6726d41232bad414125d9aa2057d45f87d1042"
-        let credentialData = "\(user):\(password)".data(using: String.Encoding.utf8)!
-        let base64Credentials = credentialData.base64EncodedString(options: [])
-        let headers = ["Authorization": "Basic \(base64Credentials)"]
         
-        Alamofire.request(CARS_URL,
-                          method: .get,
-                          parameters: nil,
-                          encoding: URLEncoding.default,
-                          headers:headers)
-            .validate()
-            .responseJSON { response in
-                if response.result.value != nil{
-                    print(response)
-                }else{
-                    
-                }
-        
-//            let result = response.result
-//            print(response)
+        Alamofire.request(CARS_URL).authenticate(user: user, password: password).responseObject { (response: DataResponse<CarResponse>) in
             
+            if response.result.isSuccess {
+                if let value = response.result.value {
+                    
+                  success(value)
+                }
+            } else {
+                failure()
+            }
         }
-
     }
+    
+    func addCarsToServer(uploadSuccess) {
+        
+        
+    }
+    
+    
+    
+}
+
+
+
+
+//    var cars = Array<Car>()
+//
+//    func requestAndMapCars(success: @escaping ([Car])  -> (), failure: @escaping () -> ()) {
+//
+//        let user = "caustomediffelflestacout"
+//        let password = "2a6726d41232bad414125d9aa2057d45f87d1042"
+//
+//        Alamofire.request(CARS_URL).authenticate(user: user, password: password).responseJSON { response in
+//
+//            if response.result.isSuccess {
+//
+//                if let value = response.result.value {
+//
+//                    if let dictionary = value as? Dictionary<String, AnyObject> { // main dictionary
+//
+//                        if let rowsArray = dictionary["rows"] as? [Dictionary<String, AnyObject>] {  // dictionary for array of rows dictionary
+//
+//                            for object in rowsArray { // loop every row in the array of dictionaries
+//
+//                                // id and key can be used here
+//
+//                                if let valueDictionary = object["value"] as? Dictionary<String, AnyObject> {
+//
+//                                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//                                    let context = appDelegate.persistentContainer.viewContext
+//                                    let car = Car(context: context)
+//
+//                                    car.id = valueDictionary["_id"] as? String
+//                                    car.rev = valueDictionary["_rev"] as? String
+//                                    car.manufacturer = valueDictionary["manufacturer"] as? String
+//                                    car.model = valueDictionary["model"] as? String
+//                                    car.secondHand = (valueDictionary["secondHand"] as? Bool) ?? false // fix
+//                                    car.summary = valueDictionary["summary"] as? String
+//                                    car.year = valueDictionary["year"] as? String
+//                                    car.horsepower = (valueDictionary["horsepower"] as? Int32) ?? 0 // fix
+//                                    car.image = UIImage(named: "new_car_image.jpg")
+//
+//                                    self.cars.append(car)
+//
+//                                }
+//                            }
+//                            success(self.cars)
+//                        }
+//                    }
+//
+//                } else {
+//                    print("There is no data")
+//                    failure()
+//                }
+//
+//            }
+//            else {
+//                print("there is no data")
+//                failure()
+//            }
+//
+//        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    func downloadCars(success: @escaping(Array<Car>) -> (), failure: @escaping() -> ()) {
+//
+//        let user: String = "caustomediffelflestacout"
+//        let password: String = "2a6726d41232bad414125d9aa2057d45f87d1042"
+//        var cars = Array<Car>()
+//
+//        Alamofire.request(CARS_URL).authenticate(user: user, password: password).responseJSON { response in
+//
+//            if response.result.isSuccess {
+//
+//                print("Success!")
+//                if let result = response.result.value {
+//                    print(result)
+//
+//                    if let dictionary = result as? Dictionary<String, AnyObject> {
+//
+//                        if let rows = dictionary["rows"] as? [Dictionary<String, AnyObject>] {
+//
+//                            for object in rows {
+//
+//                                if let value = object["value"] as? Dictionary<String, AnyObject> {
+//
+//                                    let car = Car()
+//                                    car.id = value["_id"] as? String
+//                                    car.rev = value["_rev"] as? String
+//                                    car.manufacturer = value["manufacturer"] as? String
+//                                    car.model = value["model"] as? String
+//                                    car.secondHand = (value["secondHand"] as? Bool)!
+//                                    car.summary = value["summary"] as? String
+//                                    car.year = value["year"] as? String
+//                                    car.horsepower = Int32(value["horsepower"] as! Int)
+//
+//                                    cars.append(car)
+//
+//                                }
+//                            }
+//                        }
+//                    }
+//
+//                    success(cars)
+//                }
+//            } else {
+//                print("Error!")
+//                print("Error message: " + (response.result.error?.localizedDescription)!)
+//
+//                failure()
+//            }
+//
+//        }
+//
+//    }
+
 
