@@ -37,16 +37,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
 
-        //carsDownload.requestAndMapCars(success: { (cars) in
-         //   self.cars.append(contentsOf: cars)
-         //   self.tableView.reloadData()
-       // }, failure: {
-       //     let alert = UIAlertController(title: "Error", message: "There is no data downloaded!", preferredStyle: .alert)
-       //     alert.addAction(UIAlertAction(title: "Continue offline", style: .default, handler: nil))
-       //     self.present(alert, animated: true, completion: nil)
-       //     print("error")
-       // })
-        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
         
         carsDownload.requestAndMapCars(success: { (response) in
             self.cars.removeAll()
@@ -54,8 +46,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             for row in rows {
                 
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                let context = appDelegate.persistentContainer.viewContext
                 let car = Car(context: context)
                 
                 car.id = row.value?.id

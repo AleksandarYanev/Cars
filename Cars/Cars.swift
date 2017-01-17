@@ -13,11 +13,10 @@ import AlamofireObjectMapper
 class Cars {
     
     var cars = Array<Car>()
+    let user = "caustomediffelflestacout"
+    let password = "2a6726d41232bad414125d9aa2057d45f87d1042"
     
     func requestAndMapCars(success: @escaping (CarResponse) -> (), failure: @escaping () -> ()) {
-        
-        let user = "caustomediffelflestacout"
-        let password = "2a6726d41232bad414125d9aa2057d45f87d1042"
         
         Alamofire.request(CARS_URL).authenticate(user: user, password: password).responseObject { (response: DataResponse<CarResponse>) in
             
@@ -32,11 +31,7 @@ class Cars {
         }
     }
     
-    func addCarToServer(carDictionary: Dictionary<String, AnyObject>, success: @escaping (CreateRespone) -> (), failure: @escaping () -> ()) {
-        
-        let user = "caustomediffelflestacout"
-        let password = "2a6726d41232bad414125d9aa2057d45f87d1042"
-
+    func createCarOnServer(carDictionary: Dictionary<String, AnyObject>, success: @escaping (CreateRespone) -> (), failure: @escaping () -> ()) {
         
         Alamofire.request(UPLOAD_CARS, method: .post, parameters: carDictionary, encoding: JSONEncoding.default).authenticate(user: user, password: password).responseObject { (response: DataResponse<CreateRespone>) in
             
@@ -53,7 +48,7 @@ class Cars {
 }
 
 
-
+// optionals, closures, switchh statement 
 
 //    var cars = Array<Car>()
 //
