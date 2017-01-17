@@ -24,14 +24,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
 
-        getCars()
+//        getCars()
 
-        if cars.count > 0 {
-
-            tableView.reloadData()
-        } else {
-            loadCarsData()
-        }
+//        if cars.count > 0 {
+//
+//            tableView.reloadData()
+//        } else {
+//            loadCarsData()
+//        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -47,8 +47,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
        //     print("error")
        // })
         
+        
         carsDownload.requestAndMapCars(success: { (response) in
-            
+            self.cars.removeAll()
             if let rows = response.rows {
             
             for row in rows {
@@ -69,7 +70,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 self.cars.append(car)
                 
-//                appDelegate.saveContext()
+                appDelegate.saveContext()
                 }
                 self.tableView.reloadData()
             }

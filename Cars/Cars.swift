@@ -24,7 +24,7 @@ class Cars {
             if response.result.isSuccess {
                 if let value = response.result.value {
                     
-                  success(value)
+                    success(value)
                 }
             } else {
                 failure()
@@ -32,13 +32,24 @@ class Cars {
         }
     }
     
-    func addCarsToServer(uploadSuccess) {
+    func addCarToServer(carDictionary: Dictionary<String, AnyObject>, success: @escaping (CreateRespone) -> (), failure: @escaping () -> ()) {
         
+        let user = "caustomediffelflestacout"
+        let password = "2a6726d41232bad414125d9aa2057d45f87d1042"
+
         
+        Alamofire.request(UPLOAD_CARS, method: .post, parameters: carDictionary, encoding: JSONEncoding.default).authenticate(user: user, password: password).responseObject { (response: DataResponse<CreateRespone>) in
+            
+            if response.result.isSuccess {
+                if let value = response.result.value {
+                    
+                    success(value)
+                }
+            } else {
+                failure()
+            }
+        }
     }
-    
-    
-    
 }
 
 

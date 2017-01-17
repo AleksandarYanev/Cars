@@ -225,20 +225,31 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         } else {
             
             if isEditMode! {
-                car?.image = (self.car?.image)!
-                car?.manufacturer = selectedManufacturer
-                car?.model = modelTextField.text!
-                car?.horsepower = Int32(selectedHorsePower)
-                car?.year = selectedYear
-                car?.summary = summaryTextView.text
-                car?.secondHand = switchTurnSecondHand.isOn
-                
-                
-                
-                appDelegate.saveContext()
-                
-                _ = self.navigationController?.popViewController(animated: true)
-                
+                if let car = car {
+                    
+                    car.manufacturer = selectedManufacturer
+                    car.model = modelTextField.text!
+                    car.horsepower = Int32(selectedHorsePower)
+                    car.year = selectedYear
+                    car.summary = summaryTextView.text
+                    car.secondHand = switchTurnSecondHand.isOn
+                    
+                    Cars().addCarToServer(carDictionary: car.toJSON(), success: { (result) in
+                        if result.ok == true {
+                            
+                        } else {
+                            
+                            print("error, the response is not Ok")
+                        }
+                        
+                    }, failure: {
+                        print("Error: There is no response from server!")
+                    })
+                    
+                    
+                    appDelegate.saveContext()
+                    _ = self.navigationController?.popViewController(animated: true)
+                }
             } else {
                 let car = Car(context: context)
                 car.image = #imageLiteral(resourceName: "new_car_image")
@@ -249,6 +260,20 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
                 car.summary = summaryTextView.text
                 car.secondHand = switchTurnSecondHand.isOn
                 cars.append(car)
+                
+                Cars().addCarToServer(carDictionary: car.toJSON(), success: { (response) in
+                    
+                    if response.ok == true {
+                        
+                    } else {
+                        
+                        print("error, the response is not Ok")
+                    }
+                    
+                }, failure: {
+                    print("error: create response is not Ok")
+                })
+                
                 
                 appDelegate.saveContext()
                 _ = self.navigationController?.popViewController(animated: true)
@@ -312,7 +337,7 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         textField.resignFirstResponder()
         return true
     }
-
+    
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if(text == "\n") {

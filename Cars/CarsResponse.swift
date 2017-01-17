@@ -73,3 +73,17 @@ class ValueResponse: Mappable {
     }
 }
 
+class CreateRespone: Mappable {
+    
+    required init?(map: Map) {
+        
+    }
+    
+    var ok = false
+    
+    func mapping(map: Map) {
+     
+        ok <- map["ok"]
+    }
+}
+

@@ -11,4 +11,5 @@ import Foundation
 typealias DownloadComplete = () -> ()
 
 let CARS_URL = "https://bulberadev.cloudant.com/cars/_design/cars/_view/all/"
+let UPLOAD_CARS = "https://bulberadev.cloudant.com/cars"
 
