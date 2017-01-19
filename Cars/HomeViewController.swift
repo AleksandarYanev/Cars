@@ -60,8 +60,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 self.cars.append(car)
                 
-                appDelegate.saveContext()
+                
                 }
+                appDelegate.saveContext()
                 self.tableView.reloadData()
             }
             
@@ -71,12 +72,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             alert.addAction(UIAlertAction(title: "Continue offline", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             print("error")
+             self.getCars()
+            self.tableView.reloadData()
         })
         
         self.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItem = nil
 
-       // getCars()
+       
        // tableView.reloadData()
     }
 
@@ -181,7 +184,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         if editingStyle == .delete {
             
-            Cars().deleteCarOnServer(carID: car.id!, carRev: car.rev!, success: { (result) in
+            if let carID = car.id, let carRev = car.rev {
+            
+                Cars().deleteCarOnServer(carID: carID, carRev: carRev, success: { (result) in
                 
                 if result.ok == false {
                     print("The object can't be deleted.")
@@ -190,14 +195,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             }, failure: {
                 print("The object can't be deleted.")
             })
-            
+            }
             context.delete(car)
             appDelegate.saveContext()
             cars.remove(at: indexPath.row)
             tableView.reloadData()
         }
     }
-
+    
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let carsViewController = self.storyboard?.instantiateViewController(withIdentifier: "CarDetailsVC") as! CarDetailsViewController
         carsViewController.cars = cars
