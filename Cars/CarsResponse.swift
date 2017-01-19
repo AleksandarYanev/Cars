@@ -10,11 +10,11 @@ import Foundation
 import ObjectMapper
 
 class CarResponse: Mappable {
-
+    
     required init?(map: Map) {
         
     }
-
+    
     var totalRows = 0
     var offset = 0
     var rows: [RowsResponse]?
@@ -27,7 +27,7 @@ class CarResponse: Mappable {
 }
 
 class RowsResponse: Mappable {
-
+    
     required init?(map: Map) {
         
     }
@@ -82,8 +82,24 @@ class CreateRespone: Mappable {
     var ok = false
     
     func mapping(map: Map) {
-     
+        
         ok <- map["ok"]
     }
+    
+    
 }
 
+class DeleteResponse: Mappable {
+    
+    required init?(map: Map) {
+        
+    }
+    
+    var ok = false
+    
+    func mapping(map: Map) {
+        
+        ok <- map["ok"]
+        
+    }
+}

@@ -76,8 +76,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItem = nil
 
-        getCars()
-        tableView.reloadData()
+       // getCars()
+       // tableView.reloadData()
     }
 
     func loadCarsData() {
@@ -180,7 +180,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let car = cars[indexPath.row]
 
         if editingStyle == .delete {
-
+            
+            Cars().deleteCarOnServer(carID: car.id!, carRev: car.rev!, success: { (result) in
+                
+                if result.ok == false {
+                    print("The object can't be deleted.")
+                }
+                
+            }, failure: {
+                print("The object can't be deleted.")
+            })
+            
             context.delete(car)
             appDelegate.saveContext()
             cars.remove(at: indexPath.row)

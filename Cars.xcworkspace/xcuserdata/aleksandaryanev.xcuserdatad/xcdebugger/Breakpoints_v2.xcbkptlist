@@ -9,76 +9,59 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Cars/NewOrEditViewController.swift"
-            timestampString = "506351807.233353"
+            filePath = "Cars/HomeViewController.swift"
+            timestampString = "506439879.639012"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
-            landmarkName = "saveButton(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Cars/NewOrEditViewController.swift"
-            timestampString = "506352704.55299"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "255"
-            endingLineNumber = "255"
-            landmarkName = "saveButton(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Cars/NewOrEditViewController.swift"
-            timestampString = "506352948.240789"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "263"
-            endingLineNumber = "263"
-            landmarkName = "saveButton(_:)"
-            landmarkType = "7">
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "HomeViewController"
+            landmarkType = "3">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Cars.NewOrEditViewController.saveButton (Any) -&gt; ()"
+                  symbolName = "Cars.HomeViewController.cars.setter : Swift.Array&lt;Cars.Car&gt;"
                   moduleName = "Cars"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandaryanev/Cars/Cars/NewOrEditViewController.swift"
-                  timestampString = "506356418.65327"
+                  urlString = "file:///Users/aleksandaryanev/Cars/Cars/HomeViewController.swift"
+                  timestampString = "506440018.827547"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "264"
-                  endingLineNumber = "264"
-                  offsetFromSymbolStart = "10888">
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "65">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Cars.NewOrEditViewController.(saveButton (Any) -&gt; ()).(closure #3)"
+                  symbolName = "Cars.HomeViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Cars.HomeViewController"
                   moduleName = "Cars"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aleksandaryanev/Cars/Cars/NewOrEditViewController.swift"
-                  timestampString = "506356418.655783"
+                  urlString = "file:///Users/aleksandaryanev/Cars/Cars/HomeViewController.swift"
+                  timestampString = "506440018.830378"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "266"
-                  endingLineNumber = "266"
-                  offsetFromSymbolStart = "12">
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "138">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Cars.HomeViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Cars.HomeViewController&gt;"
+                  moduleName = "Cars"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aleksandaryanev/Cars/Cars/HomeViewController.swift"
+                  timestampString = "506440018.833175"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "73">
                </Location>
             </Locations>
          </BreakpointContent>

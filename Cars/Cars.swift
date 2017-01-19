@@ -45,10 +45,39 @@ class Cars {
             }
         }
     }
+    
+    func updateCarOnServer(carDictionary: Dictionary<String, AnyObject>, success: @escaping (CreateRespone) -> (), failure: @escaping () -> ()) {
+        
+        Alamofire.request(UPDATE_CARS, method: .post, parameters: carDictionary, encoding: JSONEncoding.default).authenticate(user: user, password: password).responseObject { (response: DataResponse<CreateRespone>) in
+            
+            if response.result.isSuccess {
+                if let value = response.result.value {
+                    
+                    success(value)
+                }
+            } else {
+                failure()
+            }
+        }
+    }
+    
+    func deleteCarOnServer(carID: String, carRev: String, success: @escaping (DeleteResponse) -> (), failure: @escaping () -> ()) {
+        let deleteURL = "\(DELETE_CARS)" + carID + "?rev=" + carRev
+        Alamofire.request(deleteURL, method: .delete).authenticate(user: user, password: password).responseObject { (response: DataResponse<DeleteResponse>) in
+            
+            if response.result.isSuccess {
+                if let value = response.result.value {
+                    
+                    success(value)
+                }
+            } else {
+                failure()
+            }
+        }
 }
 
-
-// optionals, closures, switchh statement 
+    
+    
 
 //    var cars = Array<Car>()
 //
@@ -174,4 +203,4 @@ class Cars {
 //
 //    }
 
-
+}

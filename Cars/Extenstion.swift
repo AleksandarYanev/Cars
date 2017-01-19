@@ -14,8 +14,8 @@ extension Car {
         
         var dictionary = Dictionary<String, AnyObject>()
         
-        dictionary["id"] = self.id as AnyObject?
-        dictionary["rev"] = self.rev as AnyObject?
+        dictionary["_id"] = self.id as AnyObject?
+        dictionary["_rev"] = self.rev as AnyObject?
         dictionary["type"] = "car" as AnyObject?
         dictionary["manufacturer"] = self.manufacturer as AnyObject?
         dictionary["model"] = self.model as AnyObject?

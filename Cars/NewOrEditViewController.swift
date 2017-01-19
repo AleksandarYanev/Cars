@@ -234,7 +234,7 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
                     car.summary = summaryTextView.text
                     car.secondHand = switchTurnSecondHand.isOn
                     
-                    Cars().createCarOnServer(carDictionary: car.toJSON(), success: { (result) in
+                    Cars().updateCarOnServer(carDictionary: car.toJSON(), success: { (result) in
                         if result.ok == false {
                             print("error, the response is not Ok")
                         }

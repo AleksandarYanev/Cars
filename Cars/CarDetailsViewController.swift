@@ -54,9 +54,19 @@ class CarDetailsViewController: UIViewController {
         let context = appDelegate.persistentContainer.viewContext
         
         if car != nil {
+            Cars().deleteCarOnServer(carID: car.id!, carRev: car.rev!, success: { (result) in
+                
+                if result.ok == false {
+                    print("The object can't be deleted.")
+                }
+                
+            }, failure: {
+                print("The object can't be deleted.")
+            })
+        }
             context.delete(car!)
             appDelegate.saveContext()
-        }
+        
         cars.remove(at: index)
         _ = self.navigationController?.popViewController(animated: true)
     }
