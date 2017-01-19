@@ -59,10 +59,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 car.image = UIImage(named: "new_car_image")
                 
                 self.cars.append(car)
-                
+                appDelegate.saveContext()
                 
                 }
-                appDelegate.saveContext()
+               
                 self.tableView.reloadData()
             }
             
@@ -71,8 +71,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             let alert = UIAlertController(title: "Error", message: "There is no data downloaded!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Continue offline", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-            print("error")
-             self.getCars()
+            print("Error, there is no connection to the Internet.")
+            self.getCars()
             self.tableView.reloadData()
         })
         
