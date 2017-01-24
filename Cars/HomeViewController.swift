@@ -47,7 +47,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             for row in rows {
                 
                 let car = Car(context: context)
-                
+               // context.delete(car)
+               // appDelegate.saveContext()
+
                 car.id = row.value?.id
                 car.rev = row.value?.rev
                 car.manufacturer = row.value?.manufacturer
@@ -60,9 +62,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 self.cars.append(car)
                 appDelegate.saveContext()
-                
+
                 }
-               
                 self.tableView.reloadData()
             }
             
