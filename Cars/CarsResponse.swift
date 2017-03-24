@@ -12,7 +12,6 @@ import ObjectMapper
 class CarResponse: Mappable {
     
     required init?(map: Map) {
-        
     }
     
     var totalRows = 0
@@ -29,7 +28,6 @@ class CarResponse: Mappable {
 class RowsResponse: Mappable {
     
     required init?(map: Map) {
-        
     }
     
     var id = ""
@@ -46,7 +44,6 @@ class RowsResponse: Mappable {
 class ValueResponse: Mappable {
     
     required init?(map: Map) {
-        
     }
     
     var id = ""
@@ -85,8 +82,6 @@ class CreateRespone: Mappable {
         
         ok <- map["ok"]
     }
-    
-    
 }
 
 class DeleteResponse: Mappable {

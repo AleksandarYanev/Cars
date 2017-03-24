@@ -209,13 +209,10 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         }
     }
     
-    
-    
     @IBAction func saveButton(_ sender: Any) {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        
         
         if modelTextField.text == "" || manufacturerButton.title(for: .normal) == "Manufacturer" || yearButton.title(for: .normal) == "Year" || horsepowerButton.title(for: .normal) == "Horsepower" {
             
@@ -243,8 +240,8 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
                         print("Error: There is no response from server!")
                     })
                     
-                    
                     appDelegate.saveContext()
+                    
                     _ = self.navigationController?.popViewController(animated: true)
                 }
             } else {
@@ -267,7 +264,6 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
                 }, failure: {
                     print("error: create response is not Ok")
                 })
-                
                 
                 appDelegate.saveContext()
                 _ = self.navigationController?.popViewController(animated: true)
@@ -331,7 +327,6 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         textField.resignFirstResponder()
         return true
     }
-    
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if(text == "\n") {

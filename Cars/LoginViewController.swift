@@ -47,7 +47,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         defaults.set(usernameTextField.text, forKey: "userNameKey")
         defaults.set(passwordTextField.text, forKey: "passwordKey")
         defaults.set(true, forKey: "isLogged")
-        
         defaults.synchronize()
     }
     

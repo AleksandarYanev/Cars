@@ -74,7 +74,7 @@ class Cars {
                 failure()
             }
         }
-}
+    }
 
     
     
