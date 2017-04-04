@@ -232,7 +232,7 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
                     car.secondHand = switchTurnSecondHand.isOn
                     
                     Cars().updateCarOnServer(carDictionary: car.toJSON(), success: { (result) in
-                        if result.ok == false {
+                        if result == false {
                             print("error, the response is not Ok")
                         }
                         
@@ -257,7 +257,7 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
                 
                 Cars().createCarOnServer(carDictionary: car.toJSON(), success: { (response) in
                     
-                    if response.ok == false {
+                    if response == false {
                         print("error, the response is not Ok")
                     }
                     

@@ -56,7 +56,7 @@ class CarDetailsViewController: UIViewController {
         if car != nil {
             Cars().deleteCarOnServer(carID: car.id!, carRev: car.rev!, success: { (result) in
                 
-                if result.ok == false {
+                if result == false {
                     print("The object can't be deleted.")
                 }
                 

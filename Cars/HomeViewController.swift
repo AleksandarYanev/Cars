@@ -33,37 +33,36 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
-        carsDownload.requestAndMapCars(success: { (response) in
+        carsDownload.getAllCarsFromServer(success: { (response) in
+            
             self.cars.removeAll()
-            if let rows = response.rows {
+            let rows = response
+            
+            for row in rows {
                 
-                for row in rows {
-                    
-                    let car = Car(context: context)
-                    // context.delete(car)
-                    // appDelegate.saveContext()
-                    
-                    car.id = row.value?.id
-                    car.rev = row.value?.rev
-                    car.manufacturer = row.value?.manufacturer
-                    car.model = row.value?.model
-                    car.secondHand = row.value?.secondHand ?? false
-                    car.summary = row.value?.summary
-                    car.year = row.value?.year
-                    car.horsepower = row.value?.horsepower ?? 0
-                    car.image = UIImage(named: "new_car_image")
-                    
-                    self.cars.append(car)
-                    appDelegate.saveContext()
-                    
-                }
-                self.tableView.reloadData()
+                let car = Car(context: context)
+                //                     context.delete(car)
+                //                     appDelegate.saveContext()
+                
+                car.id = row.id
+                car.rev = row.rev
+                car.manufacturer = row.manufacturer
+                car.model = row.model
+                car.secondHand = row.secondHand
+                car.summary = row.summary
+                car.year = row.year
+                car.horsepower = row.horsepower
+                car.image = UIImage(named: "new_car_image")
+                
+                self.cars.append(car)
+                appDelegate.saveContext()
             }
+            self.tableView.reloadData()
             
         }, failure: {
             
@@ -77,7 +76,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.navigationItem.hidesBackButton = true
         self.navigationItem.leftBarButtonItem = nil
-        // tableView.reloadData()
+        tableView.reloadData()
     }
     
     func loadCarsData() {
@@ -146,7 +145,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             
         } catch {
             
-            print(error)
+            print("error")
         }
     }
     
@@ -184,7 +183,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 Cars().deleteCarOnServer(carID: carID, carRev: carRev, success: { (result) in
                     
-                    if result.ok == false {
+                    if result == false {
                         print("The object can't be deleted.")
                     }
                     
