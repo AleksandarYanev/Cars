@@ -49,6 +49,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 //                     context.delete(car)
                 //                     appDelegate.saveContext()
                 
+                
                 car.id = row.id
                 car.rev = row.rev
                 car.manufacturer = row.manufacturer
