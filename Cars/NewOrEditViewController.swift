@@ -234,15 +234,14 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
                     Cars().updateCarOnServer(carDictionary: car.toJSON(), success: { (result) in
                         if result == false {
                             print("error, the response is not Ok")
+                        } else {
+                            appDelegate.saveContext()
+                            _ = self.navigationController?.popViewController(animated: true)
                         }
                         
                     }, failure: {
                         print("Error: There is no response from server!")
                     })
-                    
-                    appDelegate.saveContext()
-                    
-                    _ = self.navigationController?.popViewController(animated: true)
                 }
             } else {
                 let car = Car(context: context)
@@ -259,14 +258,14 @@ class NewOrEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
                     
                     if response == false {
                         print("error, the response is not Ok")
+                    } else {
+                        appDelegate.saveContext()
+                        _ = self.navigationController?.popViewController(animated: true)
                     }
                     
                 }, failure: {
                     print("error: create response is not Ok")
                 })
-                
-                appDelegate.saveContext()
-                _ = self.navigationController?.popViewController(animated: true)
             }
         }
     }

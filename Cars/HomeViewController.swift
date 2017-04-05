@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import CDTDatastore
+
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -22,47 +24,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.delegate = self
         tableView.dataSource = self
-        
-        //        getCars()
-        //        if cars.count > 0 {
-        //
-        //            tableView.reloadData()
-        //        } else {
-        //            loadCarsData()
-        //        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        let context = appDelegate.persistentContainer.viewContext
         
         carsDownload.getAllCarsFromServer(success: { (response) in
-            
-            self.cars.removeAll()
-            let rows = response
-            
-            for row in rows {
                 
-                let car = Car(context: context)
-                //                     context.delete(car)
-                //                     appDelegate.saveContext()
-                
-                
-                car.id = row.id
-                car.rev = row.rev
-                car.manufacturer = row.manufacturer
-                car.model = row.model
-                car.secondHand = row.secondHand
-                car.summary = row.summary
-                car.year = row.year
-                car.horsepower = row.horsepower
-                car.image = UIImage(named: "new_car_image")
-                
-                self.cars.append(car)
-                appDelegate.saveContext()
-            }
+            self.cars = response
             self.tableView.reloadData()
             
         }, failure: {
@@ -79,6 +51,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationItem.leftBarButtonItem = nil
         tableView.reloadData()
     }
+    
+    
     
     func loadCarsData() {
         createCar(manufacturer: "Audi", model: "A6", year: "2006", hp: 224, summary: "Originally in 1885, automobile company Wanderer was established, later becoming a branch of Audi AG.", secondHand: true, imagePath: "audi_a6_2006.jpg")
@@ -182,7 +156,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             if let carID = car.id, let carRev = car.rev {
                 
-                Cars().deleteCarOnServer(carID: carID, carRev: carRev, success: { (result) in
+                carsDownload.deleteCarOnServer(carID: carID, carRev: carRev, success: { (result) in
                     
                     if result == false {
                         print("The object can't be deleted.")

@@ -10,13 +10,20 @@ import Foundation
 import Alamofire
 import AlamofireObjectMapper
 
+
 class Cars {
     
-    var cars = Array<Car>()
+    static var cars = Array<Car>()
     let user = "caustomediffelflestacout"
     let password = "2a6726d41232bad414125d9aa2057d45f87d1042"
     
     func getAllCarsFromServer(success: @escaping ([Car]) -> (), failure: @escaping () -> ()) {
+        
+        if Cars.cars.count > 0 {
+            
+            success(Cars.cars)
+            return
+        }
         
         Alamofire.request(CARS_URL).authenticate(user: user, password: password).responseJSON { response in
             
@@ -48,10 +55,10 @@ class Cars {
                                     car.horsepower = (valueDictionary["horsepower"] as? Int32) ?? 0 // fix
                                     car.image = UIImage(named: "new_car_image.jpg")
                                     
-                                    self.cars.append(car)
+                                    Cars.cars.append(car)
                                 }
                             }
-                            success(self.cars)
+                            success(Cars.cars)
                         }
                     }
                     
@@ -83,7 +90,7 @@ class Cars {
                         if let ok = dictionary["ok"] as? Bool {
                             
                             if ok {
-                                
+                                Cars.cars.removeAll()
                                 success(true)
                             } else {
                                 
@@ -110,6 +117,7 @@ class Cars {
                         if let ok = dictionary["ok"] as? Bool {
                             
                             if ok {
+                                Cars.cars.removeAll()
                                 success(true)
                             } else {
                                 
@@ -136,6 +144,7 @@ class Cars {
                         if let ok = dictionary["ok"] as? Bool {
                             
                             if ok {
+                                Cars.cars.removeAll()
                                 success(true)
                             } else {
                                 failure()

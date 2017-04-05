@@ -51,24 +51,23 @@ class CarDetailsViewController: UIViewController {
     
     @IBAction func deleteButtonPressed(_ sender: UIBarButtonItem) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
+//        let context = appDelegate.persistentContainer.viewContext
         
         if car != nil {
             Cars().deleteCarOnServer(carID: car.id!, carRev: car.rev!, success: { (result) in
                 
                 if result == false {
                     print("The object can't be deleted.")
+                } else {
+                    
+                    appDelegate.saveContext()
+                    _ = self.navigationController?.popViewController(animated: true)
                 }
                 
             }, failure: {
                 print("The object can't be deleted.")
             })
         }
-            context.delete(car!)
-            appDelegate.saveContext()
-        
-        cars.remove(at: index)
-        _ = self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
